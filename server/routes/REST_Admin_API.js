@@ -4,6 +4,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var user = mongoose.model('User');
 
+var students = require('../model/studentInterface');
+
 /* GET A User From The DataBase */
 router.get('/user', function(req, res) {
   if(typeof global.mongo_error !== "undefined"){
@@ -21,5 +23,27 @@ router.get('/user', function(req, res) {
     res.end(JSON.stringify(users));
   });
 });
+
+
+router.get('/students', function (req, res) {
+
+  students.getAllStudents(function (err, student) {
+    if (err) {
+      res.status(err.status || 500);
+      res.send(JSON.stringify({error: err.toString()}));
+      return;
+    }
+    //res.header("Content-type", "application/json");
+    res.json(student);
+  });
+});
+
+
+router.post('/students', function(req, res) {
+students.updateStudentPoints(req.body, function(err){});
+  res.send("");
+
+})
+
 
 module.exports = router;

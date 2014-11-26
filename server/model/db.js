@@ -21,7 +21,7 @@ if( typeof global.TEST_DATABASE != "undefined" ) {
   dbURI = global.TEST_DATABASE;
 }
 else{
-  dbURI = 'mongodb://localhost/testdb';
+  dbURI = 'mongodb://adminuser123:Admin123@ds055980.mongolab.com:55980/studypointsystem';
 }
 
 mongoose.connect(dbURI);
@@ -58,3 +58,16 @@ var usersSchema = new mongoose.Schema({
 
 mongoose.model( 'User', usersSchema,"testusers" );
 
+var studentSchema = new mongoose.Schema({
+  id: Number,
+  name: String,
+  points: Number,
+  class: String,
+  semester: String
+
+});
+
+
+mongoose.model('Students', studentSchema, "students");
+
+module.exports.studentModel = mongoose.model('testStudent',studentSchema);

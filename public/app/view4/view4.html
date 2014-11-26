@@ -1,0 +1,35 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<br><br><br><br><div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
+<p>This is the partial for view 3.</p>
+<p>Data is fetched from a REST service, connected to MongoDB </p>
+
+
+<ul>
+<div class="panel panel-default">
+    <table class="table">
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Points</td>
+        <td>Class</td>
+        <td>Semester</td>
+        <td>Add point</td>
+        <td>Remove point</td>
+
+    </tr>
+    <tr ng-repeat="student in students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.points}}</td>
+            <td>{{student.class}}</td>
+            <td>{{student.semester}}</td>
+        <td><button type="button" class="btn btn-default btn-sm" ng-click="increase(student.id, student.points)">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button></td>
+        <td><button type="button" class="btn btn-default btn-sm" ng-click="decrease(student.id, student.points)">
+            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+        </button></td>
+        </tr>
+        </table>
+    </div>
+</ul>
