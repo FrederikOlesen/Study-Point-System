@@ -2,54 +2,49 @@ var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
 
-
-
+var request = require('request');
 
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  res.redirect("app/index.html")
+router.get('/', function (req, res) {
+    res.redirect("app/index.html")
 });
 
 
 router.post('/authenticate', function (req, res) {
-  //TODO: Go and get UserName Password from "somewhere"
-  //if is invalid, return 401
-   if (req.body.username === 'student' && req.body.password === 'test') {
-    var profile = {
-      username: 'Bo the Student',
-      role: "user",
-      id: 1000
-    };
-    // We are sending the profile inside the token
-    var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
-    return;
-  }
+    var username = req.body.username;
+    var password = req.body.password;
 
-  if (req.body.username === 'teacher' && req.body.password === 'test') {
-    var profile = {
-      username: 'Peter the Teacher',
-      role: "admin",
-      id: 123423
-    };
-    // We are sending the profile inside the token
-    var token = jwt.sign(profile, require("../security/secrets").secretTokenAdmin, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
-    return;
-  }
+    request.get(
+        'http://127.0.0.1:8080/login/' + username,
+        function (error, response, body) {
+            var obj = JSON.parse(body);
 
-  else{
-    res.status(401).send('Wrong user or password');
-    return;
-  }
+            if (obj != null) {
+
+                if (username === obj.username && password === obj.password) {
+
+                    var profile = {
+                        username: obj.username,
+                        role: obj.role
+                    };
+
+                    var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
+                    res.json({token: token});
+                } else {
+                    res.status(401).send('Wrong user or password');
+                }
+            }
+            else {
+                res.status(401).send('Wrong user or password');
+            }
+        })
 });
 
-
 //Get Partials made as Views
-router.get('/partials/:partialName', function(req, res) {
-  var name = req.params.partialName;
-  res.render('partials/' + name);
+router.get('/partials/:partialName', function (req, res) {
+    var name = req.params.partialName;
+    res.render('partials/' + name);
 });
 
 module.exports = router;
