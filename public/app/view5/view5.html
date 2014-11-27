@@ -1,43 +1,42 @@
 
-<br><br><br><br><br><br><br>
+<br><br><br><br>
 
-<br>
-<br>
-<div class="container">
-    <p>Class:</p>
+<h3><span class="label label-default">Add User</span></h3>
+<form role="form">
+    <div class="form-group">
+        <label for="sel1">Class:</label>
+        <select class="form-control" id="sel1">
+            <option>Datamatiker</option>
+            <option>Multimedia</option>
+            <option>Marketing</option>
+            <option>Finans Økonom</option>
+        </select>
+
+    </div>
+
+</form>
+
     <form role="form">
-        <div class="checkbox">
-            <label><input type="checkbox" value="">Datamatiker</label>
+        <div class="form-group">
+            <label for="sel1">Semester:</label>
+            <select class="form-control" id="sel1">
+                <option>1. Semester</option>
+                <option>2. Semester</option>
+                <option>3. Semester</option>
+                <option>4. Semester</option>
+                <option>5. Semester</option>
+            </select>
+
         </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">Multimedia</label>
-        </div>
-        <div class="checkbox disabled">
-            <label><input type="checkbox" value="" >Marketing</label>
-        </div>
+
     </form>
 </div>
 <div class="container">
+    <h2>Class</h2>
 
-    <p>Semester:</p>
-    <form role="form">
-        <div class="checkbox">
-            <label><input type="checkbox" value="">1. Semester</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">2.Semester</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">3. Semester</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">4. Semester</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">5. Semester</label>
-        </div>
-    </form>
+
 </div>
+
 
 <input type ="text" ng-model="data" class="form-control" placeholder="Username">
 <br>
