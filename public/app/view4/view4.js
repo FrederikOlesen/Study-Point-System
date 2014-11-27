@@ -10,36 +10,46 @@ angular.module('myAppRename.view4', ['ngRoute'])
     }])
 
     .controller('View4Ctrl', function ($scope, $http) {
-        $scope.increase = function(id, points) {
 
-            $scope.points = points + 1;
-            points = points + 1;
-        $http({
-            url: 'adminApi/students/',
-            method: "POST",
-            data: {'id': id, 'points': points}
-        })
-        }
-        $scope.decrease = function(id, points) {
-            $scope.points = points - 1;
-            points = points - 1;
+        $scope.increase = function(id, points,data) {
+            if(data==undefined)
+            {data = 1}
+            if (data>100){
+                data=100;
+            }
+            console.log(data)
+            points = points + data;
             $http({
                 url: 'adminApi/students/',
                 method: "POST",
                 data: {'id': id, 'points': points}
             })
         }
-    $http({
-        method: 'GET',
-        url: 'adminApi/students/'
+        $scope.decrease = function(id, points, data) {
+            if(data==undefined)
+            {data = 1}
+            if (data>100){
+                data=100;
+            }
+            console.log(data)
+            points = points - data;
+            $http({
+                url: 'adminApi/students/',
+                method: "POST",
+                data: {'id': id, 'points': points}
+            })
+        }
+        $http({
+            method: 'GET',
+            url: 'adminApi/students/'
 
-    }).
-        success(function (data, status, headers, config) {
-            $scope.students = data;
         }).
-        error(function (data, status, headers, config) {
-            $scope.error = data;
-        });
-});
+            success(function (data, status, headers, config) {
+                $scope.students = data;
+            }).
+            error(function (data, status, headers, config) {
+                $scope.error = data;
+            });
+    });
 
 
