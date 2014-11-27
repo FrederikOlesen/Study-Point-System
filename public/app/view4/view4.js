@@ -11,6 +11,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
 
     .controller('View4Ctrl', function ($scope, $http) {
         $scope.increase = function(id, points) {
+
             $scope.points = points + 1;
             points = points + 1;
         $http({
