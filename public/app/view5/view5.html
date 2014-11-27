@@ -2,10 +2,16 @@
 <br><br><br><br>
 
 <h3><span class="label label-default">Add User</span></h3>
+<button type="button" class="btn btn-default" ng-click="viewstudent()">Student</button>
+<button type="button" class="btn btn-default" ng-click="viewteacher()">Teacher</button>
+
+Click me: <input type="checkbox" ng-model="checked"><br/>
+
+<div class="jumbotron" ng-hide="checked" >
 <form role="form">
-    <div class="form-group">
+    <div ng-show="false" class="form-group">
         <label for="sel1">Class:</label>
-        <select class="form-control" id="sel1">
+        <select ng-show="checked" ng-model="classdata" class="form-control" id="sel1">
             <option>Datamatiker</option>
             <option>Multimedia</option>
             <option>Marketing</option>
@@ -30,11 +36,8 @@
         </div>
 
     </form>
-</div>
-<div class="container">
 
 
-</div>
 
 <input type ="text" ng-model="data" class="form-control" placeholder="Name">
 <br>
@@ -46,3 +49,4 @@
 <button type="button" class="btn btn-default btn-sm" >
     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
 </button></td>
+</div>
