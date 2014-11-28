@@ -41,6 +41,38 @@ router.post('/authenticate', function (req, res) {
         })
 });
 
+router.post('/adduser', function (req, res) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    console.log("Body: " + req.body.password);
+
+    request.get(
+        'http://127.0.0.1:8080/login/' + username,
+        function (error, response, body) {
+            var obj = JSON.parse(body);
+
+            if (obj != null) {
+
+                if (username === obj.username && password === obj.password) {
+
+                    var profile = {
+                        username: obj.username,
+                        role: obj.role
+                    };
+
+                    var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
+                    res.json({token: token});
+                } else {
+                    res.status(401).send('Wrong user or password');
+                }
+            }
+            else {
+                res.status(401).send('Wrong user or password');
+            }
+        })
+});
+
 //Get Partials made as Views
 router.get('/partials/:partialName', function (req, res) {
     var name = req.params.partialName;
