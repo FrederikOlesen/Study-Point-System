@@ -8,30 +8,29 @@
     <div class="panel panel-default">
         <table class="table">
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Points</th>
+                <th><a href="" ng-click="predicate = 'id'; reverse=!reverse">ID</a></th>
+                <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
+                <th><a href="" ng-click="predicate = 'points'; reverse=!reverse">Points</a></th>
                 <th>Class <select class="form-control-xs" ng-model="test">
                     <option value="">All classes</option>
                     <option ng-repeat="class in getClasses()">{{class}}</option>
                 </select></th>
                 <th>Semester</th>
-                <th>Add Points</th>
-                <th>Remove Points</th>
                 <th>Number of Points </th>
             </tr>
-            <tr ng-repeat="student in students | filter:test" >
+            <tr ng-repeat="student in students | filter:test | orderBy:predicate:reverse">
                 <td>{{student.id}}</td>
                 <td>{{student.name}}</td>
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
-                <td><button type="button" class="btn btn-default btn-sm" ng-click="increase(student.id, student.points,data)">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button></td>
-                <td><button type="button" class="btn btn-default btn-sm" ng-click="decrease(student.id, student.points, data)"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button></td>
-                <td><div class="col-xs-4"><input type ="number" ng-model="data" class="form-control" placeholder="1"></div> </td>
+                <td><div class="col-xs-8"><input type ="number" ng-model="data" class="form-control" placeholder="1"></div>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="increase(student.id, student.points,data)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="decrease(student.id, student.points, data)">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button></td>
             </tr>
         </table>
     </div>

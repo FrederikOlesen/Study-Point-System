@@ -10,7 +10,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
     }])
 
     .filter('myfilter', function() {
-        return function (collection, keyname) {
+        return function (collection) {
             var output = [];
 
             collection.forEach(function(item) {
@@ -24,7 +24,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
     })
 
 
-    .controller('View4Ctrl', function ($scope, $http, $route) {
+    .controller('View4Ctrl', function ($scope, $http) {
 
         $scope.increase = function(id, points,data) {
             if(data==undefined)
@@ -73,10 +73,10 @@ angular.module('myAppRename.view4', ['ngRoute'])
             url: 'adminApi/students/'
 
         }).
-            success(function (data, status, headers, config) {
+            success(function (data) {
                 $scope.students = data;
             }).
-            error(function (data, status, headers, config) {
+            error(function (data) {
                 $scope.error = data;
             });
 
