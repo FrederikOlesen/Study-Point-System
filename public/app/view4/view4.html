@@ -3,24 +3,18 @@
 <p>This is the partial for view 3.</p>
 <p>Data is fetched from a REST service, connected to MongoDB </p>
 
-<div class="form-group">
-    <label for="sel1">Class:</label>
-    <select class="form-control" id="sel1" ng-model="test">
-        <option value="">All classes</option>
-        <option ng-repeat="class in getClasses()">{{class}}</option>
 
-    </select>
-
-</div>
-
-<ul>
+   <ul>
     <div class="panel panel-default">
         <table class="table">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Points</th>
-                <th>Class</th>
+                <th>Class <select class="form-control-xs" ng-model="test">
+                    <option value="">All classes</option>
+                    <option ng-repeat="class in getClasses()">{{class}}</option>
+                </select></th>
                 <th>Semester</th>
                 <th>Add Points</th>
                 <th>Remove Points</th>
@@ -32,7 +26,6 @@
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
-
                 <td><button type="button" class="btn btn-default btn-sm" ng-click="increase(student.id, student.points,data)">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </button></td>
