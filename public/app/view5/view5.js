@@ -15,12 +15,4 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
     .controller('View5Ctrl', function ($scope, $http) {
 
-console.log(classdata);
-        $scope.myvalue = false;
-
-        $scope.viewstudent = function(){
-            $scope.myvalue = true;
-        }
-    });
-
-
+    })

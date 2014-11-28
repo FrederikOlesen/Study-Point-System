@@ -2,25 +2,57 @@
 <br><br><br><br>
 
 <h3><span class="label label-default">Add User</span></h3>
-<button type="button" class="btn btn-default" ng-click="viewstudent()">Student</button>
-<button type="button" class="btn btn-default" ng-click="viewteacher()">Teacher</button>
 
-Click me: <input type="checkbox" ng-model="checked"><br/>
+
+Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
 <div class="jumbotron" ng-hide="checked" >
-<form role="form">
-    <div ng-show="false" class="form-group">
-        <label for="sel1">Class:</label>
-        <select ng-show="checked" ng-model="classdata" class="form-control" id="sel1">
-            <option>Datamatiker</option>
-            <option>Multimedia</option>
-            <option>Marketing</option>
-            <option>Finans Økonom</option>
-        </select>
+<h3><span class="label label-default">Teacher</span></h3>
 
-    </div>
 
-</form>
+
+
+<input type ="text" ng-model="data" class="form-control" placeholder="Name">
+<br>
+<input type ="text" ng-model="data" class="form-control" placeholder="Username">
+<br>
+<input type ="text" ng-model="data" class="form-control" placeholder="Password">
+<br>
+
+<button type="button" class="btn btn-default btn-sm" >
+    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+</button></td>
+</div>
+
+<div class="jumbotron" ng-show="checked" >
+    <h3><span class="label label-default">Student</span></h3>
+    <form role="form">
+        <div  class="form-group">
+            <label for="sel1">Study:</label>
+            <select  ng-model="classdata" class="form-control" id="sel1">
+                <option>Datamatiker</option>
+                <option>Multimedia</option>
+                <option>Marketing</option>
+                <option>Finans Økonom</option>
+            </select>
+
+        </div>
+
+    </form>
+
+    <form role="form">
+        <div  class="form-group">
+            <label for="sel1">Class:</label>
+            <select  ng-model="classdata" class="form-control" id="sel1">
+                <option>A</option>
+                <option>B</option>
+                <option>COS</option>
+
+            </select>
+
+        </div>
+
+    </form>
 
     <form role="form">
         <div class="form-group">
@@ -39,14 +71,14 @@ Click me: <input type="checkbox" ng-model="checked"><br/>
 
 
 
-<input type ="text" ng-model="data" class="form-control" placeholder="Name">
-<br>
-<input type ="text" ng-model="data" class="form-control" placeholder="Username">
-<br>
-<input type ="text" ng-model="data" class="form-control" placeholder="Password">
-<br>
+    <input type ="text" ng-model="data" class="form-control" placeholder="Name">
+    <br>
+    <input type ="text" ng-model="data" class="form-control" placeholder="Username">
+    <br>
+    <input type ="text" ng-model="data" class="form-control" placeholder="Password">
+    <br>
 
-<button type="button" class="btn btn-default btn-sm" >
-    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
-</button></td>
+    <button type="button" class="btn btn-default btn-sm" >
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+    </button></td>
 </div>
