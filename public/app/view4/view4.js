@@ -9,7 +9,22 @@ angular.module('myAppRename.view4', ['ngRoute'])
         });
     }])
 
-    .controller('View4Ctrl', function ($scope, $http) {
+    .filter('myfilter', function() {
+        return function (collection, keyname) {
+            var output = [];
+
+            collection.forEach(function(item) {
+                if(output.filter(function(x) {return x.class === item.class;}).length <= 0) {
+                    output.push(item);
+                }
+            });
+
+            return output;
+        }
+    })
+
+
+    .controller('View4Ctrl', function ($scope, $http, $route) {
 
         $scope.increase = function(id, points,data) {
             if(data==undefined)
@@ -23,7 +38,14 @@ angular.module('myAppRename.view4', ['ngRoute'])
                 url: 'adminApi/students/',
                 method: "POST",
                 data: {'id': id, 'points': points}
-            })
+            });
+            for(var i = 0; i < $scope.students.length; i++) {
+                if($scope.students[i].id === id) {
+                    $scope.students[i].points += data;
+                    break;
+                }
+            }
+           //$route.reload();
         }
         $scope.decrease = function(id, points, data) {
             if(data==undefined)
@@ -37,7 +59,14 @@ angular.module('myAppRename.view4', ['ngRoute'])
                 url: 'adminApi/students/',
                 method: "POST",
                 data: {'id': id, 'points': points}
-            })
+            });
+            for(var i = 0; i < $scope.students.length; i++) {
+                if($scope.students[i].id === id) {
+                    $scope.students[i].points -= data;
+                    break;
+                }
+            }
+            f
         }
         $http({
             method: 'GET',
@@ -50,6 +79,18 @@ angular.module('myAppRename.view4', ['ngRoute'])
             error(function (data, status, headers, config) {
                 $scope.error = data;
             });
+
+        $scope.getClasses =  function () {
+            var output = [];
+
+            $scope.students.forEach(function(item) {
+                if(output.filter(function(x) {return x === item.class;}).length <= 0) {
+                    output.push(item.class);
+                }
+            });
+
+            return output;
+        }
     });
 
 
