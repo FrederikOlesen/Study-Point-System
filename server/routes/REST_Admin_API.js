@@ -45,5 +45,11 @@ students.updateStudentPoints(req.body, function(err){});
 
 })
 
+router.put('/addtostudent', function (req, res) {
+  students.addtostudent(req.body, function (err) {
+  });
+  console.log(req.body);
+  res.send("");
+})
 
 module.exports = router;

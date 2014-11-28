@@ -66,7 +66,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
                     break;
                 }
             }
-            f
+
         }
         $http({
             method: 'GET',

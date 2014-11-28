@@ -19,9 +19,17 @@ function updateStudentPoints(body, callback) {
     }, {multi: true}).exec();
 
 }
+function addtostudent(data, callback){
+    var student = new students(data);
+    student.save(function(err) {
+        console.log(student);
+
+    })
+}
 
 
 module.exports = {
     getAllStudents: getAllStudents,
-    updateStudentPoints: updateStudentPoints
+    updateStudentPoints: updateStudentPoints,
+    addtostudent: addtostudent
 }
