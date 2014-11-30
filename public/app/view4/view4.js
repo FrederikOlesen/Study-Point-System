@@ -18,7 +18,6 @@ angular.module('myAppRename.view4', ['ngRoute'])
                     output.push(item);
                 }
             });
-
             return output;
         }
     })
@@ -45,8 +44,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
                     break;
                 }
             }
-           //$route.reload();
-        }
+        };
         $scope.decrease = function(id, points, data) {
             if(data==undefined)
             {data = 1}
@@ -66,8 +64,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
                     break;
                 }
             }
-
-        }
+        };
         $http({
             method: 'GET',
             url: 'adminApi/students/'
@@ -88,7 +85,6 @@ angular.module('myAppRename.view4', ['ngRoute'])
                     output.push(item.class);
                 }
             });
-
             return output;
         }
     });

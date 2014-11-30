@@ -11,7 +11,7 @@ function getAllStudents(callback) {
 }
 
 
-function updateStudentPoints(body, callback) {
+function updateStudentPoints(body) {
     students.update({id: body.id}, {
         $set: {
             points: body.points
@@ -19,12 +19,12 @@ function updateStudentPoints(body, callback) {
     }, {multi: true}).exec();
 
 }
-function addtostudent(data, callback){
+function addtostudent(data){
     var student = new students(data);
-    student.save(function(err) {
+    student.save(function() {
         console.log(student);
 
-    })
+    });
 }
 
 
@@ -32,4 +32,4 @@ module.exports = {
     getAllStudents: getAllStudents,
     updateStudentPoints: updateStudentPoints,
     addtostudent: addtostudent
-}
+};
