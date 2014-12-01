@@ -79,7 +79,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
 
         $scope.getClasses =  function() {
             var output = [];
-
+            if(!angular.isUndefined($scope.students)) {
             $scope.students.forEach(function(item) {
                 if(output.filter(function(x) {return x === item.class;}).length <= 0) {
                     output.push(item.class);
@@ -87,4 +87,5 @@ angular.module('myAppRename.view4', ['ngRoute'])
             });
             return output;
         };
+        }
     });

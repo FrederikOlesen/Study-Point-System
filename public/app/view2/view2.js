@@ -24,4 +24,7 @@ angular.module('myAppRename.view2', ['ngRoute'])
         }
         $scope.error = data;
       });
+
+
+
   }]);
