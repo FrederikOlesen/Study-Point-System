@@ -77,7 +77,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
                 $scope.error = data;
             });
 
-        $scope.getClasses =  function () {
+        $scope.getClasses =  function() {
             var output = [];
 
             $scope.students.forEach(function(item) {
@@ -86,7 +86,5 @@ angular.module('myAppRename.view4', ['ngRoute'])
                 }
             });
             return output;
-        }
+        };
     });
-
-
