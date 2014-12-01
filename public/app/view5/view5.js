@@ -49,11 +49,11 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
             }
 
-            //var login = {
-            //    username: $scope.usernamestudent,
-            //    password: $scope.passwordstudent,
-            //    role: "STUDENT"
-            //}
+            var login = {
+                username: $scope.usernamestudent,
+                password: $scope.passwordstudent,
+                role: "STUDENT"
+            }
 
             console.log(student)
 
@@ -65,13 +65,13 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     console.log("fejl");
                 });
 
-            //$http.post('adminApi/addusers', login)
-            //    .success(function (data, status, headers, config) {
-            //        console.log("Test")
-            //    })
-            //    .error(function (data, status, headers, config) {
-            //        console.log("")
-            //    });
+            $http.post('adminApi/addusers', login)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
         }
 
 
