@@ -17,7 +17,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
 
         $scope.viewstudent = function () {
-            console.log("Study :" + $scope.studystudent);
+
             console.log("Class " + $scope.classstudent);
             console.log("Name " + $scope.namestudent);
             console.log("Username " + $scope.usernamestudent);
@@ -45,15 +45,15 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 username: $scope.usernamestudent,
                 name: $scope.namestudent,
                 points: 0,
-                class: $scope.classstudent,
-                semester: $scope.semesterstudent
+                class: $scope.classstudent
+
             }
 
-            var login = {
-                username: $scope.usernamestudent,
-                password: $scope.passwordstudent,
-                role: "STUDENT"
-            }
+            //var login = {
+            //    username: $scope.usernamestudent,
+            //    password: $scope.passwordstudent,
+            //    role: "STUDENT"
+            //}
 
             console.log(student)
 
@@ -65,13 +65,13 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     console.log("fejl");
                 });
 
-            $http.post('adminApi/addusers', login)
-                .success(function (data, status, headers, config) {
-                    console.log("Test")
-                })
-                .error(function (data, status, headers, config) {
-                    console.log("")
-                });
+            //$http.post('adminApi/addusers', login)
+            //    .success(function (data, status, headers, config) {
+            //        console.log("Test")
+            //    })
+            //    .error(function (data, status, headers, config) {
+            //        console.log("")
+            //    });
         }
 
 

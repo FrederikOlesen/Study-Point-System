@@ -26,23 +26,11 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
 <div class="jumbotron" ng-show="checked" >
     <h3><span class="label label-default">Student</span></h3>
-    <form role="form">
-        <div  class="form-group">
-            <label for="sel1">Study:</label>
-            <select  ng-model="studystudent" class="form-control" id="sel1">
-                <option>Datamatiker</option>
-                <option>Multimedia</option>
-                <option>Marketing</option>
-                <option>Finans Økonom</option>
-            </select>
 
-        </div>
-
-    </form>
 
     <form role="form">
         <div  class="form-group">
-            <label for="sel1">Class:</label>
+            <label >Class:</label>
             <select  ng-model="classstudent" class="form-control" id="sel2">
                 <option>data</option>
                 <option>datb</option>
@@ -58,7 +46,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
     <form role="form">
         <div class="form-group">
-            <label for="sel1">Semester:</label>
+            <label for="sel2">Semester:</label>
             <select ng-model="semesterstudent" class="form-control" id="sel3">
                 <option>1</option>
                 <option>2</option>
@@ -75,7 +63,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <br>
     <input type ="text" ng-model="usernamestudent" class="form-control" placeholder="Username">
     <br>
-    <input type ="text" ng-model="passwordstudent" class="form-control" placeholder="Password">
+    <input type ="password" ng-model="passwordstudent" class="form-control" placeholder="Password">
     <br>
 
     <button ng-click="viewstudent()" type="button" class="btn btn-default btn-sm" >

@@ -12,7 +12,7 @@ function getAllStudents(callback) {
 
 
 function updateStudentPoints(body) {
-    students.update({id: body.id}, {
+    students.update({username: body.username}, {
         $set: {
             points: body.points
         }
