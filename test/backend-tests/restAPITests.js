@@ -67,4 +67,18 @@ describe('REST API for /user', function () {
         })
     });
 
+    it("Should return true if names equals the right thing", function (done) {
+        http.get("http://localhost:" + testPort + "/adminApi/students", function (res) {
+            res.setEncoding("utf8");//response data is now a string
+            res.on("data", function (chunk) {
+
+                var n = JSON.parse(chunk);
+                n.length.should.equal(2);
+                n[0].name.should.equal("Frederik Olesen");
+                n[1].name.should.equal("Allan Pilotsen");
+                done();
+            });
+        })
+    });
+
 });

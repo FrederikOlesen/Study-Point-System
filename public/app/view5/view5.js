@@ -6,7 +6,7 @@
 
 angular.module('myAppRename.view5', ['ngRoute'])
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/view5', {
             templateUrl: 'app/view5/view5.html',
             controller: 'View5Ctrl'
@@ -16,12 +16,12 @@ angular.module('myAppRename.view5', ['ngRoute'])
     .controller('View5Ctrl', function ($scope, $http) {
 
 
-        $scope.viewstudent = function(){
-            console.log("Study :"+$scope.studystudent);
-            console.log("Class "+$scope.classstudent);
-            console.log("Name "+$scope.namestudent);
-            console.log("Username "+$scope.usernamestudent);
-            console.log("Password "+$scope.passwordstudent);
+        $scope.viewstudent = function () {
+            console.log("Study :" + $scope.studystudent);
+            console.log("Class " + $scope.classstudent);
+            console.log("Name " + $scope.namestudent);
+            console.log("Username " + $scope.usernamestudent);
+            console.log("Password " + $scope.passwordstudent);
 
             //var array;
             //$http({
@@ -41,7 +41,20 @@ angular.module('myAppRename.view5', ['ngRoute'])
             //console.log(array);
 
 
-            var student = {username: $scope.usernamestudent, name: $scope.namestudent, points: 0, class: $scope.classstudent, semester: $scope.semesterstudent}
+            var student = {
+                username: $scope.usernamestudent,
+                name: $scope.namestudent,
+                points: 0,
+                class: $scope.classstudent,
+                semester: $scope.semesterstudent
+            }
+
+            var login = {
+                username: $scope.usernamestudent,
+                password: $scope.passwordstudent,
+                role: "STUDENT"
+            }
+
             console.log(student)
 
             $http.put('/adminApi/addtostudent', student)
@@ -51,8 +64,15 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 .error(function (err) {
                     console.log("fejl");
                 });
-        }
 
+            $http.post('adminApi/addusers', login)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
+        }
 
 
     })
