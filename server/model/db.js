@@ -59,7 +59,7 @@ var usersSchema = new mongoose.Schema({
 mongoose.model( 'User', usersSchema,"testusers" );
 
 var studentSchema = new mongoose.Schema({
-  id: Number,
+  username: String,
   name: String,
   points: Number,
   class: String,

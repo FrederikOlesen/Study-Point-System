@@ -25,7 +25,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
 
     .controller('View4Ctrl', function ($scope, $http) {
 
-        $scope.increase = function(id, points,data) {
+        $scope.increase = function(username, points,data) {
             if(data==undefined)
             {data = 1}
             if (data>100){
@@ -36,16 +36,16 @@ angular.module('myAppRename.view4', ['ngRoute'])
             $http({
                 url: 'adminApi/students/',
                 method: "POST",
-                data: {'id': id, 'points': points}
+                data: {'username': username, 'points': points}
             });
             for(var i = 0; i < $scope.students.length; i++) {
-                if($scope.students[i].id === id) {
+                if($scope.students[i].username === username) {
                     $scope.students[i].points += data;
                     break;
                 }
             }
         };
-        $scope.decrease = function(id, points, data) {
+        $scope.decrease = function(username, points, data) {
             if(data==undefined)
             {data = 1}
             if (data>100){
@@ -56,10 +56,10 @@ angular.module('myAppRename.view4', ['ngRoute'])
             $http({
                 url: 'adminApi/students/',
                 method: "POST",
-                data: {'id': id, 'points': points}
+                data: {'username': username, 'points': points}
             });
             for(var i = 0; i < $scope.students.length; i++) {
-                if($scope.students[i].id === id) {
+                if($scope.students[i].username === username) {
                     $scope.students[i].points -= data;
                     break;
                 }

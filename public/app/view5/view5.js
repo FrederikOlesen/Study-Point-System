@@ -16,12 +16,12 @@ angular.module('myAppRename.view5', ['ngRoute'])
     .controller('View5Ctrl', function ($scope, $http) {
 
 
-        $scope.view = function(){
-            console.log("Study :"+$scope.classdata);
-            console.log("Class "+$scope.classdata2);
-            console.log("Name "+$scope.data4);
-            console.log("Username "+$scope.data5);
-            console.log("Password "+$scope.data6);
+        $scope.viewstudent = function(){
+            console.log("Study :"+$scope.studystudent);
+            console.log("Class "+$scope.classstudent);
+            console.log("Name "+$scope.namestudent);
+            console.log("Username "+$scope.usernamestudent);
+            console.log("Password "+$scope.passwordstudent);
 
             //var array;
             //$http({
@@ -41,7 +41,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
             //console.log(array);
 
 
-            var student = {id: 6, name: $scope.data4, points: 0, class: $scope.classdata2, semester: $scope.classdata3}
+            var student = {username: $scope.usernamestudent, name: $scope.namestudent, points: 0, class: $scope.classstudent, semester: $scope.semesterstudent}
             console.log(student)
 
             $http.put('/adminApi/addtostudent', student)

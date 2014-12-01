@@ -29,7 +29,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <form role="form">
         <div  class="form-group">
             <label for="sel1">Study:</label>
-            <select  ng-model="classdata" class="form-control" id="sel1">
+            <select  ng-model="studystudent" class="form-control" id="sel1">
                 <option>Datamatiker</option>
                 <option>Multimedia</option>
                 <option>Marketing</option>
@@ -43,7 +43,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <form role="form">
         <div  class="form-group">
             <label for="sel1">Class:</label>
-            <select  ng-model="classdata2" class="form-control" id="sel2">
+            <select  ng-model="classstudent" class="form-control" id="sel2">
                 <option>data</option>
                 <option>datb</option>
                 <option>COS</option>
@@ -59,7 +59,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <form role="form">
         <div class="form-group">
             <label for="sel1">Semester:</label>
-            <select ng-model="classdata3" class="form-control" id="sel3">
+            <select ng-model="semesterstudent" class="form-control" id="sel3">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -73,14 +73,14 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
 
 
-    <input type ="text" ng-model="data4" class="form-control" placeholder="Name">
+    <input type ="text" ng-model="namestudent" class="form-control" placeholder="Name">
     <br>
-    <input type ="text" ng-model="data5" class="form-control" placeholder="Username">
+    <input type ="text" ng-model="usernamestudent" class="form-control" placeholder="Username">
     <br>
-    <input type ="text" ng-model="data6" class="form-control" placeholder="Password">
+    <input type ="text" ng-model="passwordstudent" class="form-control" placeholder="Password">
     <br>
 
-    <button ng-click="view()" type="button" class="btn btn-default btn-sm" >
+    <button ng-click="viewstudent()" type="button" class="btn btn-default btn-sm" >
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
     </button></td>
 </div>
