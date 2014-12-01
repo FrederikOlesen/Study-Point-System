@@ -11,14 +11,21 @@
                 <th><a href="" ng-click="predicate = 'username'; reverse=!reverse">Username</a></th>
                 <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
                 <th><a href="" ng-click="predicate = 'points'; reverse=!reverse">Points</a></th>
-                <th>Class <select class="form-control-xs" ng-model="test">
+                <th>Class<select class="form-control-xs" ng-model="filterclass">
                     <option value="">All classes</option>
                     <option ng-repeat="class in getClasses()">{{class}}</option>
                 </select></th>
-                <th>Semester</th>
+                <th>Semester<select class="form-control-xs" ng-model="filtersemester">
+                    <option value="">All classes</option>
+                    <option>1st Semester</option>
+                    <option>2nd Semester</option>
+                    <option>3rd Semester</option>
+                    <option>4th Semester</option>
+                    <option>5th Semester</option>
+                </select></th>
                 <th>Number of Points </th>
             </tr>
-            <tr ng-repeat="student in students | filter:test | orderBy:predicate:reverse">
+            <tr ng-repeat="student in students | filter:filterclass | filter:filtersemester | orderBy:predicate:reverse">
                 <td>{{student.username}}</td>
                 <td>{{student.name}}</td>
                 <td>{{student.points}}</td>
