@@ -64,7 +64,7 @@ router.put('/addtoteacher', function (req, res) {
 
 router.post('/addusers', function (req, res) {
 
-    JSONrequest.JSONRequestPost("localhost", 8080, '/login', req.body, function (error, data) {
+    JSONrequest.JSONRequestPost("137.135.179.157", 8080, '/login', req.body, function (error, data) {
     if (error) {
         console.log("You are inside error")
         res.status(error.status || 500);
@@ -79,7 +79,7 @@ router.post('/addusers', function (req, res) {
 
 router.put('/changepassword', function (req, res) {
     var username = req.body.username;
-    JSONrequest.JSONRequestPut("localhost", 8080, '/login/' + username, req.body, function (error, data) {
+    JSONrequest.JSONRequestPut("137.135.179.157", 8080, '/login/' + username, req.body, function (error, data) {
         if (error) {
             console.log("You are inside error")
             res.status(error.status || 500);
