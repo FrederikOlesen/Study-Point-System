@@ -70,7 +70,7 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <br>
     <input type ="password" ng-model="passwordstudent" class="form-control" placeholder="Password">
     <br>
-
+    <span ng-show="!classstudent || !semesterstudent || !namestudent || !usernamestudent || !passwordstudent ">Please fill all fields</span>
     <button ng-click="addstudent()" type="button" class="btn btn-default btn-sm" ng-disabled="!classstudent || !semesterstudent || !namestudent
             || !usernamestudent || !passwordstudent ">
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
