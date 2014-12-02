@@ -6,6 +6,7 @@ var user = mongoose.model('User');
 var JSONrequest = require('../model/jsonrequest');
 
 var students = require('../model/studentInterface');
+var teachers = require('../model/studentInterface');
 
 /* GET A User From The DataBase */
 router.get('/user', function (req, res) {
@@ -49,6 +50,13 @@ router.post('/students', function (req, res) {
 
 router.put('/addtostudent', function (req, res) {
     students.addtostudent(req.body, function (err) {
+    });
+    console.log(req.body);
+    res.send("");
+})
+
+router.put('/addtoteacher', function (req, res) {
+    teachers.addtoteacher(req.body, function (err) {
     });
     console.log(req.body);
     res.send("");

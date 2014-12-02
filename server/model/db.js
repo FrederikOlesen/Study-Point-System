@@ -67,7 +67,12 @@ var studentSchema = new mongoose.Schema({
 
 });
 
+var teacherSchema = new mongoose.Schema({
+  name: String
+});
 
 mongoose.model('Students', studentSchema, "students");
+mongoose.model('Teachers', studentSchema, "teachers");
 
 module.exports.studentModel = mongoose.model('testStudent',studentSchema);
+module.exports.studentModel = mongoose.model('testTeacher',teacherSchema);

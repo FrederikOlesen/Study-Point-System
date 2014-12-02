@@ -15,37 +15,47 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
     .controller('View5Ctrl', function ($scope, $http) {
 
+        $scope.addteacher = function(){
 
-        $scope.viewstudent = function () {
+            //var login = {
+            //    username: $scope.usernameteacher,
+            //    password: $scope.passwordsteacher,
+            //    role: "TEACHER"
+            //}
+            //$http.post('adminApi/addusers', login)
+            //    .success(function (data, status, headers, config) {
+            //        console.log("Test")
+            //    })
+            //    .error(function (data, status, headers, config) {
+            //        console.log("")
+            //    });
+            console.log("Name " + $scope.nameteacher);
+            var teacher = {name : $scope.nameteacher}
+
+            $http.put('/adminApi/addtoteacher', teacher)
+                .success(function () {
+
+                })
+                .error(function (err) {
+                    console.log("fejl");
+                });
+
+
+
+        }
+        $scope.addstudent = function () {
 
             console.log("Class " + $scope.classstudent);
             console.log("Name " + $scope.namestudent);
             console.log("Username " + $scope.usernamestudent);
             console.log("Password " + $scope.passwordstudent);
 
-            //var array;
-            //$http({
-            //    method: 'GET',
-            //    url: 'adminApi/students/'
-            //
-            //
-            //
-            //}).
-            //    success(function (data, status, headers, config) {
-            //        array = data;
-            //    }).
-            //    error(function (data, status, headers, config) {
-            //        array = data;
-            //    });
-            //
-            //console.log(array);
-
-
             var student = {
                 username: $scope.usernamestudent,
                 name: $scope.namestudent,
                 points: 0,
-                class: $scope.classstudent
+                class: $scope.classstudent,
+                semester: $scope.semesterstudent
 
             }
 
