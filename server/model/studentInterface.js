@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var students = mongoose.model('Students');
+var teachers = mongoose.model('Teachers');
 
 function getAllStudents(callback) {
     students.find({}, function (err, student) {
@@ -25,11 +26,21 @@ function addtostudent(data){
         console.log(student);
 
     });
+
+}
+function addtoteacher(data){
+    var teacher = new teachers(data);
+    teacher.save(function() {
+        console.log(teacher);
+
+    });
+
 }
 
 
 module.exports = {
     getAllStudents: getAllStudents,
     updateStudentPoints: updateStudentPoints,
-    addtostudent: addtostudent
+    addtostudent: addtostudent,
+    addtoteacher: addtoteacher
 };

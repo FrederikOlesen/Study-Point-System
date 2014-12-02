@@ -11,15 +11,20 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
 
 
+<form >
+<input type ="text" ng-model="nameteacher" class="form-control" placeholder="Name" >
 
-<input type ="text" ng-model="data" class="form-control" placeholder="Name">
 <br>
-<input type ="text" ng-model="data2" class="form-control" placeholder="Username">
-<br>
-<input type ="text" ng-model="data3" class="form-control" placeholder="Password">
-<br>
+<input type ="text" ng-model="usernameteacher" class="form-control" placeholder="Username" >
 
-<button type="button" class="btn btn-default btn-sm" >
+<br>
+<input type ="text"  ng-model="passwordteacher" class="form-control" placeholder="Password">
+    <span ng-show="!passwordteacher || !usernameteacher || !nameteacher ">Please fill all fields</span>
+<br>
+</form>
+
+
+<button ng-click="addteacher()" type="button" class="btn btn-default btn-sm" ng-disabled="!nameteacher || !usernameteacher || !passwordteacher"  >
     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
 </button></td>
 </div>
@@ -48,11 +53,11 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
         <div class="form-group">
             <label for="sel2">Semester:</label>
             <select ng-model="semesterstudent" class="form-control" id="sel3">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>1st Semester</option>
+                <option>2nd Semester</option>
+                <option>3rd Semester</option>
+                <option>4th Semester</option>
+                <option>5th Semester</option>
             </select>
 
         </div>
@@ -66,7 +71,8 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <input type ="password" ng-model="passwordstudent" class="form-control" placeholder="Password">
     <br>
 
-    <button ng-click="viewstudent()" type="button" class="btn btn-default btn-sm" >
+    <button ng-click="addstudent()" type="button" class="btn btn-default btn-sm" ng-disabled="!classstudent || !semesterstudent || !namestudent
+            || !usernamestudent || !passwordstudent ">
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
     </button></td>
 </div>
