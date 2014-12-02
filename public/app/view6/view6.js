@@ -12,48 +12,23 @@ angular.module('myAppRename.view6', ['ngRoute'])
     .controller('View6Ctrl', function ($scope, $http) {
 
 
-        $scope.viewstudent = function () {
+        $scope.newpassword = function () {
 
             console.log("Class " + $scope.classstudent);
             console.log("Name " + $scope.namestudent);
             console.log("Username " + $scope.usernamestudent);
             console.log("Password " + $scope.passwordstudent);
 
-            //var array;
-            //$http({
-            //    method: 'GET',
-            //    url: 'adminApi/students/'
-            //
-            //
-            //
-            //}).
-            //    success(function (data, status, headers, config) {
-            //        array = data;
-            //    }).
-            //    error(function (data, status, headers, config) {
-            //        array = data;
-            //    });
-            //
-            //console.log(array);
-
-
-            var student = {
-                username: $scope.usernamestudent,
-                name: $scope.namestudent,
-                points: 0,
-                class: $scope.classstudent
-
-            }
 
             var login = {
-                username: $scope.usernamestudent,
-                password: $scope.passwordstudent,
-                role: "STUDENT"
+                username: $scope.profileuser,
+                password: $scope.oldpass,
+                confirmedpassword: $scope.newpass
             }
 
-            console.log(student)
+            console.log(login)
 
-            $http.put('/adminApi/addtostudent', student)
+            $http.put('/adminApi/changepassword', login)
                 .success(function () {
 
                 })
@@ -61,13 +36,6 @@ angular.module('myAppRename.view6', ['ngRoute'])
                     console.log("fejl");
                 });
 
-            $http.post('adminApi/addusers', login)
-                .success(function (data, status, headers, config) {
-                    console.log("Test")
-                })
-                .error(function (data, status, headers, config) {
-                    console.log("")
-                });
         }
 
 

@@ -64,13 +64,28 @@ router.put('/addtoteacher', function (req, res) {
 
 router.post('/addusers', function (req, res) {
 
-    JSONrequest("localhost", 8080, '/login', req.body, function (error, data) {
+    JSONrequest.JSONRequestPost("localhost", 8080, '/login', req.body, function (error, data) {
     if (error) {
         console.log("You are inside error")
         res.status(error.status || 500);
         res.send(JSON.stringify({error: error.toString()}));
         return;
     }
+        console.log("Data: " + JSON.stringify(data));
+        console.log("Error: " + error);
+        res.send("");
+    })
+});
+
+router.put('/changepassword', function (req, res) {
+    var username = req.body.username;
+    JSONrequest.JSONRequestPut("localhost", 8080, '/login/' + username, req.body, function (error, data) {
+        if (error) {
+            console.log("You are inside error")
+            res.status(error.status || 500);
+            res.send(JSON.stringify({error: error.toString()}));
+            return;
+        }
         console.log("Data: " + JSON.stringify(data));
         console.log("Error: " + error);
         res.send("");
