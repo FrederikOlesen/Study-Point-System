@@ -30,6 +30,8 @@
           <li><a href="#/view3" >Admins only (teachers)</a></li>
           <li><a href="#/view4" >Add slutty points</a></li>
           <li><a href="#/view5" >Add User</a></li>
+          <li><a href="#/view6" >Change password</a></li>
+
         </ul>
 
         <form class="navbar-form navbar-right" role="form" ng-show="!isAuthenticated" ng-submit="submit()">
@@ -41,7 +43,8 @@
             <input type="password" style="width:10em;" placeholder="Password" class="form-control"
                    ng-model="user.password">
           </div>
-          <button type="submit" class="btn btn-success">Sign in</button>
+          <button type="submit" class="btn btn-success">Log in</button>
+
         </form>
         <div class="navbar-right" ng-show="isAuthenticated">
           <p class="navbar-text">Logged on as: {{username}}</p>
@@ -66,6 +69,7 @@
 <script src="app/view3/view3.js"></script>
 <script src="app/view4/view4.js"></script>
 <script src="app/view5/view5.js"></script>
+<script src="app/view6/view6.js"></script>
 <script src="app/components/controllers.js"></script>
 <script src="app/components/directives.js"></script>
 <script src="app/components/factories.js"></script>
