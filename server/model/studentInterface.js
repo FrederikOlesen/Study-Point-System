@@ -20,6 +20,10 @@ function updateStudentPoints(body) {
     }, {multi: true}).exec();
 
 }
+
+function deleteStudent(data){
+    students.delete(data);
+}
 function addtostudent(data){
     var student = new students(data);
     student.save(function() {

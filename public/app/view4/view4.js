@@ -77,6 +77,7 @@ angular.module('myAppRename.view4', ['ngRoute'])
                 $scope.error = data;
             });
 
+
         $scope.getClasses =  function() {
             var output = [];
             if(!angular.isUndefined($scope.students)) {
