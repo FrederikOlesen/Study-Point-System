@@ -16,7 +16,7 @@ router.post('/authenticate', function (req, res) {
     var password = req.body.password;
 
     request.get(
-        'http://127.0.0.1:8080/login/' + username,
+        '137.135.179.157:8080/login/' + username,
         function (error, response, body) {
             var obj = JSON.parse(body);
 

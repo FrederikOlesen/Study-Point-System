@@ -7,14 +7,16 @@
 
 <div class="jumbotron">
 
-    <input type ="text" ng-model="data" class="form-control" placeholder="Old password">
+    <input type ="text" ng-model="profileuser" class="form-control" placeholder="Username">
+    <br>
+    <input type ="text" ng-model="oldpass" class="form-control" placeholder="Old password">
     <br>
     <input type ="text" ng-model="data2" class="form-control" placeholder="New password">
     <br>
-    <input type ="text" ng-model="data3" class="form-control" placeholder="Confirm new password">
+    <input type ="text" ng-model="newpass" class="form-control" placeholder="Confirm new password">
     <br>
 
-    <button ng-click="yoMomma()" type="button" class="btn btn-default btn-sm" >
+    <button ng-click="newpassword()" type="button" class="btn btn-default btn-sm" >
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
     </button></td>
 </div>
