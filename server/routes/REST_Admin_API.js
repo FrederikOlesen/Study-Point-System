@@ -40,10 +40,8 @@ router.get('/students', function (req, res) {
     });
 });
 
-router.delete('/students', function (req, res)
-{
-    students.deleteStudent(req.body, function (err)
-    {
+router.delete('/students', function (req, res) {
+    students.deleteStudent(req.body, function (err) {
 
     });
     res.send("");
@@ -73,22 +71,7 @@ router.put('/addtoteacher', function (req, res) {
 
 router.post('/addusers', function (req, res) {
 
-    JSONrequest.JSONRequestPost("137.135.179.157", 8080, '/login', req.body, function (error, data) {
-    if (error) {
-        console.log("You are inside error")
-        res.status(error.status || 500);
-        res.send(JSON.stringify({error: error.toString()}));
-        return;
-    }
-        console.log("Data: " + JSON.stringify(data));
-        console.log("Error: " + error);
-        res.send("");
-    })
-});
-
-router.put('/changepassword', function (req, res) {
-    var username = req.body.username;
-    JSONrequest.JSONRequestPut("137.135.179.157", 8080, '/login/' + username, req.body, function (error, data) {
+    JSONrequest.JSONRequestPost("localhost", 8080, '/login', req.body, function (error, data) {
         if (error) {
             console.log("You are inside error")
             res.status(error.status || 500);
@@ -98,6 +81,41 @@ router.put('/changepassword', function (req, res) {
         console.log("Data: " + JSON.stringify(data));
         console.log("Error: " + error);
         res.send("");
+    })
+});
+
+router.put('/changepassword', function (req, res) {
+    var username = req.body.username;
+    JSONrequest.JSONRequestPut("localhost", 8080, '/login/' + username, req.body, function (error, data) {
+        if (error) {
+            console.log("You are inside error")
+            res.status(error.status || 500);
+            res.send(JSON.stringify({error: error.toString()}));
+            return;
+        }
+        console.log("Data: " + JSON.stringify(data));
+        console.log("Error: " + error);
+        res.send("");
+    })
+});
+
+router.delete('/deleteperson/:username', function (req, res) {
+
+    var username = req.params.username;
+
+    teachers.deleteStudent(username);
+
+    JSONrequest.JSONRequestDelete("localhost", 8080, '/login/' + username, req.params.username, function (error, data) {
+        if (error) {
+            console.log("You are inside error")
+            res.status(error.status || 500);
+            res.send(JSON.stringify({error: error.toString()}));
+            return;
+        }
+        console.log("Data: " + JSON.stringify(data));
+        console.log("Error: " + error);
+        res.send("");
+
     })
 });
 

@@ -26,15 +26,22 @@ angular.module('myAppRename.view7', ['ngRoute'])
                 $scope.error = data;
             });
 
-        $http({
-            method: 'DELETE',
-            url: 'adminApi/students/'
+        $scope.deleteperson = function (username) {
 
-        }).
-            success(function (data) {
-                $scope.students = data;
-            }).
-            error(function (data) {
-                $scope.error = data;
-            });
+            console.log("Username: " + username);
+
+            var student = {username: username}
+
+            var student1 = JSON.stringify(student);
+
+            $http.delete('adminApi/deleteperson/' + username)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
+        }
     })
+
+

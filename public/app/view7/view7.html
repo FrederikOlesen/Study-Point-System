@@ -1,5 +1,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<br><br><br><br><div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
+<br><br><br><br>
+<div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
 <p>This is the partial for view 3.</p>
 <p>Data is fetched from a REST service, connected to MongoDB </p>
 
@@ -32,9 +33,11 @@
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
-                <td><button ng-click="deleteStudent(student.username)" type="button" class="btn btn-default btn-sm" >
-                    <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Remove
-                </button></td>
+                <td>
+                    <button ng-click="deleteperson(student.username)" type="button" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Remove
+                    </button>
+                </td>
 
             </tr>
         </table>
