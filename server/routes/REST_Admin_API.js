@@ -8,9 +8,9 @@ var JSONrequest = require('../model/jsonrequest');
 var students = require('../model/studentInterface');
 var teachers = require('../model/studentInterface');
 
+var host = "137.135.179.157";
+
 /* GET A User From The DataBase */
-
-
 
 
 router.get('/user', function (req, res) {
@@ -30,23 +30,22 @@ router.get('/user', function (req, res) {
     });
 });
 
-router.get ('/checkusername/:user', function(req,res){
+router.get('/checkusername/:user', function (req, res) {
         var user = req.params.user;
-        students.getuser(user,function (err, username){
+        students.getuser(user, function (err, username) {
                 if (err) {
                     res.status(err.status || 400);
                     res.end(JSON.stringify({error: err.toString()}));
                     return;
                 }
-               if(username != null){
-                   res.end("true")
-               }
-                else{
-                   res.end("false");
-               }
+                if (username != null) {
+                    res.end("true")
+                }
+                else {
+                    res.end("false");
+                }
 
             }
-
         )
     }
 )
@@ -96,7 +95,7 @@ router.put('/addtoteacher', function (req, res) {
 
 router.post('/addusers', function (req, res) {
 
-    JSONrequest.JSONRequestPost("localhost", 8080, '/login', req.body, function (error, data) {
+    JSONrequest.JSONRequestPost(host, 8080, '/login', req.body, function (error, data) {
         if (error) {
             console.log("You are inside error")
             res.status(error.status || 500);
@@ -111,7 +110,7 @@ router.post('/addusers', function (req, res) {
 
 router.put('/changepassword', function (req, res) {
     var username = req.body.username;
-    JSONrequest.JSONRequestPut("localhost", 8080, '/login/' + username, req.body, function (error, data) {
+    JSONrequest.JSONRequestPut(host, 8080, '/login/' + username, req.body, function (error, data) {
         if (error) {
             console.log("You are inside error")
             res.status(error.status || 500);
@@ -128,9 +127,7 @@ router.delete('/deleteperson/:username', function (req, res) {
 
     var username = req.params.username;
 
-    teachers.deleteStudent(username);
-
-    JSONrequest.JSONRequestDelete("localhost", 8080, '/login/' + username, req.params.username, function (error, data) {
+    JSONrequest.JSONRequestDelete(host, 8080, '/login/' + username, req.params.username, function (error, data) {
         if (error) {
             console.log("You are inside error")
             res.status(error.status || 500);
@@ -142,6 +139,8 @@ router.delete('/deleteperson/:username', function (req, res) {
         res.send("");
 
     })
+
+    //teachers.deleteStudent(username);
 });
 
 module.exports = router;
