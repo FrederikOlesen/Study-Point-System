@@ -13,15 +13,15 @@ exports.JSONRequestPost = function (host, port, path, obj, callback) {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
-            'Content-Lenght': postdata.length
+            'Content-Length': postdata.length
         }
     }
 
     console.log("Postdata: " + postdata);
-
-
+    console.log("You are in error JSONRequest");
 
     var request = http.request(options, function (response) {
+        console.log("You are in error JSONRequest request");
         var result = "";
         response.setEncoding('utf8');
         response.on('data', function (chunk) {
@@ -33,6 +33,7 @@ exports.JSONRequestPost = function (host, port, path, obj, callback) {
         })
 
         response.on('error', function (e) {
+
             callback(e);
         })
     })
@@ -50,12 +51,11 @@ exports.JSONRequestPut = function (host, port, path, obj, callback) {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
-            'Content-Lenght': postdata.length
+            'Content-Length': postdata.length
         }
     }
 
     console.log("Postdata: " + postdata);
-
 
 
     var request = http.request(options, function (response) {
@@ -70,6 +70,7 @@ exports.JSONRequestPut = function (host, port, path, obj, callback) {
         })
 
         response.on('error', function (e) {
+            console.log("Test in error");
             callback(e);
         })
     })

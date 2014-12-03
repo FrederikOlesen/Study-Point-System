@@ -15,22 +15,22 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
     .controller('View5Ctrl', function ($scope, $http) {
 
-        $scope.addteacher = function(){
+        $scope.addteacher = function () {
 
-            //var login = {
-            //    username: $scope.usernameteacher,
-            //    password: $scope.passwordsteacher,
-            //    role: "TEACHER"
-            //}
-            //$http.post('adminApi/addusers', login)
-            //    .success(function (data, status, headers, config) {
-            //        console.log("Test")
-            //    })
-            //    .error(function (data, status, headers, config) {
-            //        console.log("")
-            //    });
+            var login = {
+                username: $scope.usernameteacher,
+                password: $scope.passwordsteacher,
+                role: "TEACHER"
+            }
+            $http.post('adminApi/addusers', login)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
             console.log("Name " + $scope.nameteacher);
-            var teacher = {name : $scope.nameteacher}
+            var teacher = {name: $scope.nameteacher}
 
             $http.put('/adminApi/addtoteacher', teacher)
                 .success(function () {
@@ -39,7 +39,6 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 .error(function (err) {
                     console.log("fejl");
                 });
-
 
 
         }
