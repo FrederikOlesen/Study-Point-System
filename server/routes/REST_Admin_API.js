@@ -40,6 +40,15 @@ router.get('/students', function (req, res) {
     });
 });
 
+router.delete('/students', function (req, res)
+{
+    students.deleteStudent(req.body, function (err)
+    {
+
+    });
+    res.send("");
+});
+
 
 router.post('/students', function (req, res) {
     students.updateStudentPoints(req.body, function (err) {

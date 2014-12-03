@@ -25,4 +25,16 @@ angular.module('myAppRename.view7', ['ngRoute'])
             error(function (data) {
                 $scope.error = data;
             });
+
+        $http({
+            method: 'DELETE',
+            url: 'adminApi/students/'
+
+        }).
+            success(function (data) {
+                $scope.students = data;
+            }).
+            error(function (data) {
+                $scope.error = data;
+            });
     })

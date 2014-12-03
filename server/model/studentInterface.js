@@ -28,7 +28,6 @@ function addtostudent(data){
     var student = new students(data);
     student.save(function() {
         console.log(student);
-
     });
 
 }
@@ -46,5 +45,6 @@ module.exports = {
     getAllStudents: getAllStudents,
     updateStudentPoints: updateStudentPoints,
     addtostudent: addtostudent,
-    addtoteacher: addtoteacher
+    addtoteacher: addtoteacher,
+    deleteStudent: deleteStudent
 };
