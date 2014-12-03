@@ -11,6 +11,24 @@ function getAllStudents(callback) {
     });
 }
 
+function getAllUsernames(callback) {
+    students.username.find({}, function (err, student) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, student);
+    });
+}
+
+function getuser(user,callback) {
+    students.findOne({username:user}, function (err, student) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, student);
+    });
+}
+
 
 function updateStudentPoints(body) {
     students.update({username: body.username}, {
@@ -46,5 +64,7 @@ module.exports = {
     updateStudentPoints: updateStudentPoints,
     addtostudent: addtostudent,
     addtoteacher: addtoteacher,
-    deleteStudent: deleteStudent
+    deleteStudent: deleteStudent,
+    getallUsernames: getAllUsernames,
+    getuser: getuser
 };

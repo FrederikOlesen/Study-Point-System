@@ -1,0 +1,52 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h3><span class="label label-default">Add Periode</span></h3>
+
+<div class="jumbotron" ng-hide="checked" >
+    <h3><span class="label label-default">Period</span></h3>
+
+
+
+    <form >
+        <input type ="text" ng-model="nameperiod" class="form-control" placeholder="Name of Period" >
+
+        <label for="sel3">Semester:</label>
+        <select ng-model="semesterstudent" class="form-control" id="sel3">
+            <option>1st Semester</option>
+            <option>2nd Semester</option>
+            <option>3rd Semester</option>
+            <option>4th Semester</option>
+            <option>5th Semester</option>
+        </select>
+
+        <form role="form">
+            <div  class="form-group">
+                <label >Class:</label>
+                <select  ng-model="classstudent" class="form-control" id="sel2">
+                    <option>data</option>
+                    <option>datb</option>
+                    <option>COS</option>
+                    <option>mula</option>
+                    <option>mulb</option>
+
+                </select>
+
+            </div>
+
+        </form>
+        <br>
+        <input type ="number" ng-model="maxpoints" class="form-control" placeholder="maxpoints" >
+
+        <br>
+        <input type ="text"  ng-model="passwordteacher" class="form-control" placeholder="Password">
+
+
+
+        <br>
+    </form>
+
+    </div>

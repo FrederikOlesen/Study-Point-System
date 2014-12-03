@@ -71,6 +71,14 @@ var teacherSchema = new mongoose.Schema({
   name: String
 });
 
+var periodSchema = new mongoose.Schema({
+  name: String,
+  semester: String,
+  class: String,
+  maxpoints: Number,
+  students: Array
+});
+
 mongoose.model('Students', studentSchema, "students");
 mongoose.model('Teachers', studentSchema, "teachers");
 

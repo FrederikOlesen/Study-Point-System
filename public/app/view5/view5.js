@@ -51,7 +51,23 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     console.log("")
                 });
         }
+$scope.checkuser = function(){
 
+    $http.get('/adminApi/checkusername/' + $scope.usernamestudent).
+        success(function(data, status, headers, config) {
+            console.log(data)
+            $scope.check = data;
+
+            if(data == "false"){
+                console.log("Jeg kommer herind")
+                $scope.addstudent();
+            }
+        }).
+        error(function(data, status, headers, config) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+}
         $scope.addstudent = function () {
 
             console.log("Class " + $scope.classstudent);
@@ -68,11 +84,11 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
             }
 
-            var login = {
-                username: $scope.usernamestudent,
-                password: $scope.passwordstudent,
-                role: "STUDENT"
-            }
+            //var login = {
+            //    username: $scope.usernamestudent,
+            //    password: $scope.passwordstudent,
+            //    role: "STUDENT"
+            //}
 
             console.log(student)
 
@@ -84,13 +100,13 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     console.log("fejl");
                 });
 
-            $http.post('adminApi/addusers', login)
-                .success(function (data, status, headers, config) {
-                    console.log("Test")
-                })
-                .error(function (data, status, headers, config) {
-                    console.log("")
-                });
+            //$http.post('adminApi/addusers', login)
+            //    .success(function (data, status, headers, config) {
+            //        console.log("Test")
+            //    })
+            //    .error(function (data, status, headers, config) {
+            //        console.log("")
+            //    });
         }
 
 

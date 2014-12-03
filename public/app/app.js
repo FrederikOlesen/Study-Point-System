@@ -15,6 +15,7 @@ angular.module('myAppRename', [
   'myAppRename.view5',
   'myAppRename.view6',
   'myAppRename.view7',
+  'myAppRename.view8',
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
