@@ -36,7 +36,7 @@ angular.module('myAppRename.controllers', []).
                     var encodedProfile = data.token.split('.')[1];
                     var profile = JSON.parse(url_base64_decode(encodedProfile));
                     $scope.username = profile.username;
-                    $scope.isAdmin = profile.role == "admin";
+                    $scope.isAdmin = profile.role == "TEACHER";
                     $scope.isUser = !$scope.isAdmin;
                     $scope.error = null;
                 })
