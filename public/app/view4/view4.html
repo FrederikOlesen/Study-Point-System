@@ -31,12 +31,14 @@
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
-                <td><div class="col-xs-8"><input type ="number" ng-model="data" class="form-control" placeholder="1"></div>
+                <td>
+                    <div class="col-xs-8">
+                        <input type ="number" ng-model="data" class="form-control" min="1" max="99" required></div>
                     <button type="button" class="btn btn-default btn-sm" ng-click="increase(student.username, student.points,data)">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus"></span>
                     </button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="decrease(student.username, student.points, data)">
-                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-minus"></span>
                     </button></td>
             </tr>
         </table>

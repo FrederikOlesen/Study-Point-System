@@ -46,12 +46,9 @@ angular.module('myAppRename.view4', ['ngRoute'])
             }
         };
         $scope.decrease = function(username, points, data) {
-            if(data==undefined)
-            {data = 1}
-            if (data>100){
-                data=100;
-            }
-            console.log(data)
+            if(data == undefined) {
+                data = 1}
+
             points = points - data;
             $http({
                 url: 'adminApi/students/',
