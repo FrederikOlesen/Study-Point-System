@@ -29,8 +29,13 @@ router.post('/authenticate', function (req, res) {
                         role: obj.role
                     };
 
-                    var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
-                    res.json({token: token});
+                    if (obj.role === 'STUDENT') {
+                        var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
+                        res.json({token: token});
+                    } else {
+                        var token = jwt.sign(profile, require("../security/secrets").secretTokenAdmin, {expiresInMinutes: 60 * 5});
+                        res.json({token: token});
+                    }
                 } else {
                     res.status(401).send('Wrong user or password');
                 }
