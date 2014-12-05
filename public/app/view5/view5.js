@@ -21,7 +21,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
             console.log("Username " + $scope.usernameteacher);
             console.log("Password " + $scope.passwordteacher);
 
-            var student = {
+            var teacher = {
                 name: $scope.nameteacher,
                 username: $scope.usernameteacher
 
@@ -33,9 +33,9 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 role: "TEACHER"
             }
 
-            console.log(student)
+            console.log(teacher)
 
-            $http.put('/adminApi/addtostudent', student)
+            $http.put('/adminApi/addtoteacher', teacher)
                 .success(function () {
 
                 })
