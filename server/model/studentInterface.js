@@ -20,8 +20,8 @@ function getAllUsernames(callback) {
     });
 }
 
-function getuser(user,callback) {
-    students.findOne({username:user}, function (err, student) {
+function getuser(user, callback) {
+    students.findOne({username: user}, function (err, student) {
         if (err) {
             return callback(err);
         }
@@ -39,19 +39,27 @@ function updateStudentPoints(body) {
 
 }
 
-function deleteStudent(data){
-    students.delete(data);
+function deleteStudent(username) {
+    students.remove({username: username}, function (err, docs) {
+        if (err) {
+            console.log("You are in delete person");
+        } else {
+            console.log("Succesfully");
+        }
+
+    });
+
 }
-function addtostudent(data){
+function addtostudent(data) {
     var student = new students(data);
-    student.save(function() {
+    student.save(function () {
         console.log(student);
     });
 
 }
-function addtoteacher(data){
+function addtoteacher(data) {
     var teacher = new teachers(data);
-    teacher.save(function() {
+    teacher.save(function () {
         console.log(teacher);
 
     });
