@@ -37,6 +37,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 });
         }
 
+        
         $scope.addteacher = function () {
 
             console.log("Name " + $scope.nameteacher);
