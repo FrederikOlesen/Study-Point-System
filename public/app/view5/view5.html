@@ -3,6 +3,8 @@
 
 Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
 
+
+        <!--TEACHER PART-->
 <div class="jumbotron" ng-hide="checked" >
 <h3><span class="label label-default">Teacher</span></h3>
 
@@ -19,13 +21,15 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <span ng-show="!passwordteacher || !usernameteacher || !nameteacher ">Please fill all fields</span>
 <br>
 </form>
-
-
-<button ng-click="addteacher()" type="button" class="btn btn-default btn-sm" ng-disabled="!nameteacher || !usernameteacher || !passwordteacher"  >
+    <span ng-model="savedteacher" ng-show="savedteacher" > User saved </span>
+<span ng-model="checkteacher" ng-show="checkteacher">Username allready exists</span><br>
+<button ng-click="checkuserteacher()" type="button" class="btn btn-default btn-sm" ng-disabled="!nameteacher || !usernameteacher || !passwordteacher"  >
     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
 </button></td>
 
 </div>
+
+        <!--STUDENT PART-->
 
 <div class="jumbotron" ng-show="checked" >
     <h3><span class="label label-default">Student</span></h3>
@@ -68,10 +72,13 @@ Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
     <br>
     <input type ="password" ng-model="passwordstudent" class="form-control" placeholder="Password">
     <br>
+
     <span ng-model="check" ng-show="check">Username allready exists</span><br>
 
+    <span ng-model="saved" ng-show="saved" > User saved </span>
+
     <span ng-show="!classstudent || !semesterstudent || !namestudent || !usernamestudent || !passwordstudent ">Please fill all fields</span>
-    <button ng-click="checkuser()" type="button" class="btn btn-default btn-sm" ng-disabled="!classstudent || !semesterstudent || !namestudent
+    <button ng-click="checkuserstudent()" type="button" class="btn btn-default btn-sm" ng-disabled="!classstudent || !semesterstudent || !namestudent
             || !usernamestudent || !passwordstudent ">
         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
     </button></td>

@@ -29,6 +29,15 @@ function getuser(user, callback) {
     });
 }
 
+function getuserteacher(user, callback) {
+    teachers.findOne({username: user}, function (err, teacher) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, teacher);
+    });
+}
+
 
 function updateStudentPoints(body) {
     students.update({username: body.username}, {
@@ -74,5 +83,6 @@ module.exports = {
     addtoteacher: addtoteacher,
     deleteStudent: deleteStudent,
     getallUsernames: getAllUsernames,
-    getuser: getuser
+    getuser: getuser,
+    getuserteacher: getuserteacher
 };

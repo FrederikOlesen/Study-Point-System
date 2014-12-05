@@ -68,7 +68,8 @@ var studentSchema = new mongoose.Schema({
 });
 
 var teacherSchema = new mongoose.Schema({
-  name: String
+  name: String,
+  username: String
 });
 
 var periodSchema = new mongoose.Schema({
@@ -80,7 +81,7 @@ var periodSchema = new mongoose.Schema({
 });
 
 mongoose.model('Students', studentSchema, "students");
-mongoose.model('Teachers', studentSchema, "teachers");
+mongoose.model('Teachers', teacherSchema, "teachers");
 
 module.exports.studentModel = mongoose.model('testStudent',studentSchema);
-module.exports.studentModel = mongoose.model('testTeacher',teacherSchema);
+module.exports.teacherModel = mongoose.model('testTeacher',teacherSchema);
