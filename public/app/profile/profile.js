@@ -3,8 +3,8 @@
 angular.module('myAppRename.profile', ['ngRoute'])
 
   .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider.when('/student', {
-      templateUrl: 'app/student/profile.html',
+    $routeProvider.when('/profile', {
+      templateUrl: 'app/profile/profile.html',
       controller: 'View2Ctrl'
     });
   }])
