@@ -38,17 +38,28 @@ router.get('/checkusername/:user', function (req, res) {
                     res.end(JSON.stringify({error: err.toString()}));
                     return;
                 }
-                if (username != null) {
-                    res.end("true")
-                }
-                else {
-                    res.end("false");
-                }
+                teachers.getuserteacher(user, function (err, username1) {
+                        if (err) {
+                            res.status(err.status || 400);
+                            res.end(JSON.stringify({error: err.toString()}));
+                            return;
+                        }
+                        if (username != null || username1 != null) {
+                            res.end("true")
+                        }
+                        else {
+                            res.end("false");
+                        }
+
+                    }
+                )
 
             }
         )
+
     }
 )
+
 
 
 router.get('/students', function (req, res) {
