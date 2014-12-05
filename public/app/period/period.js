@@ -3,11 +3,11 @@
  */
 'use strict';
 
-angular.module('myAppRename.view8', ['ngRoute'])
+angular.module('myAppRename.period', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/view8', {
-            templateUrl: 'app/view8/view8.html',
+        $routeProvider.when('/period', {
+            templateUrl: 'app/period/period.html',
             controller: 'View8Ctrl'
         });
     }])

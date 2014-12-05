@@ -3,11 +3,11 @@
  */
 'use strict';
 
-angular.module('myAppRename.view7', ['ngRoute'])
+angular.module('myAppRename.delete', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/view7', {
-            templateUrl: 'app/view7/view7.html',
+        $routeProvider.when('/delete', {
+            templateUrl: 'app/delete/delete.html',
             controller: 'View7Ctrl'
         });
     }])
@@ -35,10 +35,10 @@ angular.module('myAppRename.view7', ['ngRoute'])
             var student1 = JSON.stringify(student);
 
             $http.delete('adminApi/deleteperson/' + username)
-                .success(function (data, status, headers, config) {
+                .success(function () {
                     console.log("Test")
                 })
-                .error(function (data, status, headers, config) {
+                .error(function () {
                     console.log("")
                 });
         }

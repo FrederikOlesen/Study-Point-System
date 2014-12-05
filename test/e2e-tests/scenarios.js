@@ -26,14 +26,14 @@
 //  });
 //
 //
-//  describe('view2', function() {
+//  describe('student', function() {
 //
 //    beforeEach(function() {
-//      browser.get('#/view2');
+//      browser.get('#/student');
 //    });
 //
 //
-//    it('should render view2 when user navigates to /view2', function() {
+//    it('should render student when user navigates to /student', function() {
 //      expect(element.all(by.css('[ng-view] p')).first().getText()).
 //        toMatch(/partial for view 2/);
 //    });

@@ -1,13 +1,8 @@
 <div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
-<p>This is the partial for view 3.</p>
-<p>Data is fetched from a REST service, connected to MongoDB </p>
-
-
-<ul>
+   <ul>
     <div class="panel panel-default">
         <table class="table">
             <tr>
-                <th><a href="" ng-click="predicate = 'username'; reverse=!reverse">Username</a></th>
                 <th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
                 <th><a href="" ng-click="predicate = 'points'; reverse=!reverse">Points</a></th>
                 <th><select class="form-control-xs" ng-model="filterclass">
@@ -22,21 +17,22 @@
                     <option>4th Semester</option>
                     <option>5th Semester</option>
                 </select></th>
-
+                <th>Number of Points </th>
             </tr>
             <tr ng-repeat="student in students | filter:filterclass | filter:filtersemester | orderBy:predicate:reverse">
-
-                <td>{{student.username}}</td>
                 <td>{{student.name}}</td>
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
                 <td>
-                    <button ng-click="deleteperson(student.username)" type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Remove
+                    <div class="col-xs-8">
+                        <input type ="number" ng-model="data" class="form-control" min="1" max="99" maxlength="2" required></div>
+                    <button type="button" class="btn btn-default btn-sm" ng-click="increase(student.username, student.points,data)">
+                        <span class="glyphicon glyphicon-plus"></span>
                     </button>
-                </td>
-
+                    <button type="button" class="btn btn-default btn-sm" ng-click="decrease(student.username, student.points, data)">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </button></td>
             </tr>
         </table>
     </div>

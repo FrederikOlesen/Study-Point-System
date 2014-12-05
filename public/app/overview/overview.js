@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('myAppRename.view4', ['ngRoute'])
+angular.module('myAppRename.overview', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/view4', {
-            templateUrl: 'app/view4/view4.html',
+        $routeProvider.when('/overview', {
+            templateUrl: 'app/overview/overview.html',
             controller: 'View4Ctrl'
         });
     }])

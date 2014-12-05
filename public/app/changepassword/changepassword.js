@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('myAppRename.view6', ['ngRoute'])
+angular.module('myAppRename.changepassword', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/view6', {
-            templateUrl: 'app/view6/view6.html',
+        $routeProvider.when('/changepassword', {
+            templateUrl: 'app/changepassword/changepassword.html',
             controller: 'View6Ctrl'
         });
     }])

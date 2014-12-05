@@ -9,13 +9,13 @@ angular.module('myAppRename', [
   'myAppRename.factories',
   'myAppRename.filters',
   'myAppRename.view1',
-  'myAppRename.view2',
-  'myAppRename.view3',
-  'myAppRename.view4',
+  'myAppRename.profile',
+  'myAppRename.documentation',
+  'myAppRename.overview',
   'myAppRename.view5',
-  'myAppRename.view6',
-  'myAppRename.view7',
-  'myAppRename.view8',
+  'myAppRename.changepassword',
+  'myAppRename.delete',
+  'myAppRename.period',
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
