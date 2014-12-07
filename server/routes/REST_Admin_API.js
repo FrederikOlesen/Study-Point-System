@@ -61,7 +61,6 @@ router.get('/checkusername/:user', function (req, res) {
 )
 
 
-
 router.get('/students', function (req, res) {
 
     students.getAllStudents(function (err, student) {

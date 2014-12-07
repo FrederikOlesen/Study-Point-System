@@ -27,7 +27,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
                         console.log("Jeg kommer herind TEACHER")
                         $scope.addteacher();
                     }
-                    else{
+                    else {
                         $scope.savedteacher = "false";
                     }
                 }).
@@ -37,7 +37,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
                 });
         }
 
-        
+
         $scope.addteacher = function () {
 
             console.log("Name " + $scope.nameteacher);
@@ -50,29 +50,29 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
             }
 
-            //var login = {
-            //    username: $scope.usernameteacher,
-            //    password: $scope.passwordteacher,
-            //    role: "TEACHER"
-            //}
+            var login = {
+                username: $scope.usernameteacher,
+                password: $scope.passwordteacher,
+                role: "TEACHER"
+            }
 
             console.log(teacher)
 
             $http.put('/adminApi/addtoteacher', teacher)
                 .success(function () {
-                $scope.savedteacher = "true";
+                    $scope.savedteacher = "true";
                 })
                 .error(function (err) {
                     console.log("fejl");
                 });
 
-        //    $http.post('adminApi/addusers', login)
-        //        .success(function (data, status, headers, config) {
-        //            console.log("Test")
-        //        })
-        //        .error(function (data, status, headers, config) {
-        //            console.log("")
-        //        });
+            $http.post('adminApi/addusers', login)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
         }
         $scope.checkuserstudent = function () {
 
@@ -85,7 +85,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
                         console.log("Jeg kommer herind STUDENT")
                         $scope.addstudent();
                     }
-                    else{
+                    else {
                         $scope.saved = "false";
                     }
                 }).
@@ -110,29 +110,29 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
             }
 
-            //var login = {
-            //    username: $scope.usernamestudent,
-            //    password: $scope.passwordstudent,
-            //    role: "STUDENT"
-            //}
+            var login = {
+                username: $scope.usernamestudent,
+                password: $scope.passwordstudent,
+                role: "STUDENT"
+            }
 
             console.log(student)
 
             $http.put('/adminApi/addtostudent', student)
                 .success(function () {
-                $scope.saved = "true";
+                    $scope.saved = "true";
                 })
                 .error(function (err) {
                     console.log("fejl");
                 });
 
-            //$http.post('adminApi/addusers', login)
-            //    .success(function (data, status, headers, config) {
-            //        console.log("Test")
-            //    })
-            //    .error(function (data, status, headers, config) {
-            //        console.log("")
-            //    });
+            $http.post('adminApi/addusers', login)
+                .success(function (data, status, headers, config) {
+                    console.log("Test")
+                })
+                .error(function (data, status, headers, config) {
+                    console.log("")
+                });
         }
 
 
