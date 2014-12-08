@@ -15,35 +15,46 @@ router.post('/authenticate', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
 
+    console.log("Test");
+
     request.get(
         'http://137.135.179.157:8080/login/' + username,
         function (error, response, body) {
-            var obj = JSON.parse(body);
 
-            if (obj != null) {
+            if (body === null || body === 'undefined') {
+                res.status(401).send('Wrong username or password');
 
-                if (username === obj.username && password === obj.password) {
 
-                    var profile = {
-                        username: obj.username,
-                        role: obj.role
-                    };
+            } else {
+                var obj = JSON.parse(body);
 
-                    if (obj.role === 'STUDENT') {
-                        var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
-                        res.json({token: token});
+                if (obj != null) {
+
+                    if (username === obj.username && password === obj.password) {
+
+                        var profile = {
+                            username: obj.username,
+                            role: obj.role
+                        };
+
+                        if (obj.role === 'STUDENT') {
+                            var token = jwt.sign(profile, require("../security/secrets").secretTokenUser, {expiresInMinutes: 60 * 5});
+                            res.json({token: token});
+                        } else {
+                            var token = jwt.sign(profile, require("../security/secrets").secretTokenAdmin, {expiresInMinutes: 60 * 5});
+                            res.json({token: token});
+                        }
                     } else {
-                        var token = jwt.sign(profile, require("../security/secrets").secretTokenAdmin, {expiresInMinutes: 60 * 5});
-                        res.json({token: token});
+                        res.status(401).send('Wrong username or password');
                     }
-                } else {
-                    res.status(401).send('Wrong user or password');
+                }
+                else {
+                    res.status(401).send('Wrong username or password');
                 }
             }
-            else {
-                res.status(401).send('Wrong user or password');
-            }
-        })
+        }
+    )
+
 });
 
 //Get Partials made as Views
