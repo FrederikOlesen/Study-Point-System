@@ -18,21 +18,18 @@
                     <option>4th Semester</option>
                     <option>5th Semester</option>
                 </select></th>
-
             </tr>
             <tr ng-repeat="student in students | filter:filterclass | filter:filtersemester | orderBy:predicate:reverse">
-
                 <td>{{student.username}}</td>
                 <td>{{student.name}}</td>
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
                 <td>{{student.semester}}</td>
                 <td>
-                    <button ng-click="deleteperson(student.username)" type="button" class="btn btn-default btn-sm">
+                    <button ng-click="confirmation();deleteperson(student.username)" type="button" class="btn btn-default btn-sm">
                         <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Remove
                     </button>
                 </td>
-
             </tr>
         </table>
     </div>

@@ -42,6 +42,11 @@ angular.module('myAppRename.delete', ['ngRoute'])
                     console.log("")
                 });
         }
+        $scope.confirmation = function ()
+        {
+
+                confirm("Are you sure you want to delete this user");
+        }
     })
 
 
