@@ -8,6 +8,8 @@ var testPort = 9999;
 var testServer;
 var mongoose = require("mongoose");
 var Students = mongoose.model("Students");
+var username = 'MadsJeppesen';
+var localHostPort = 8080;
 
 describe('REST API for /user', function () {
     //Start the Server before the TESTS
@@ -67,18 +69,16 @@ describe('REST API for /user', function () {
         })
     });
 
-    it("Should return true if names equals the right thing", function (done) {
-        http.get("http://localhost:" + testPort + "/adminApi/students", function (res) {
+   /* it("Should return the user from the JPA-server, which has the right username", function (done) {
+        http.get("http://localhost:" + localHostPort + "/login/" + username, function (res) {
             res.setEncoding("utf8");//response data is now a string
             res.on("data", function (chunk) {
-
                 var n = JSON.parse(chunk);
-                n.length.should.equal(2);
-                n[0].name.should.equal("Frederik Olesen");
-                n[1].name.should.equal("Allan Pilotsen");
+                n[0].username.should.equal("MadsJeppesen");
                 done();
             });
         })
     });
+   */
 
 });
