@@ -18,7 +18,7 @@ angular.module('myAppRename', [
   'myAppRename.period',
 ]).
 config(['$routeProvider', function($routeProvider) {
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/frontpage'});
 }])
 .config(function ($httpProvider) {
     $httpProvider.interceptors.push('authInterceptor');

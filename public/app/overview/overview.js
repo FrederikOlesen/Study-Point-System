@@ -42,7 +42,7 @@ angular.module('myAppRename.overview', ['ngRoute'])
                 if($scope.students[i].username === username) {
                     $scope.students[i].points += data;
                     break;
-                }
+                };
             }
         };
         $scope.decrease = function(username, points, data) {
