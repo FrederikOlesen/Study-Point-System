@@ -1,19 +1,36 @@
 /**
+ * Created by Michael on 10-12-2014.
+ */
+
+/**
  * Created by Michael on 27-11-2014.
  */
 
 'use strict';
 
-angular.module('myAppRename.view5', ['ngRoute'])
+angular.module('myAppRename.adduser', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/adduser', {
             templateUrl: 'app/adduser/adduser.html',
-            controller: 'View5Ctrl'
+            controller: 'addstudentCtrl'
         });
     }])
 
-    .controller('View5Ctrl', function ($scope, $http) {
+    .controller('addstudentCtrl', function ($scope, $http) {
+
+        $http({
+            method: 'GET',
+            url: 'adminApi/semesterclassnew/'
+
+        }).
+            success(function (data) {
+                $scope.semesterclass = data;
+                console.log($scope.semesterclass);
+            }).
+            error(function (data) {
+                $scope.error = data;
+            });
 
         $scope.checkuserteacher = function () {
 
@@ -94,6 +111,27 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     // or server returns response with an error status.
                 });
         }
+
+
+
+        $scope.addsemesterclass = function (){
+
+            var semesterclass = {
+
+                semesterclassname: $scope.semesterclassname,
+                students:[]
+            }
+
+            $http.put('/adminApi/addtosemesterclassnew', semesterclass)
+                .success(function () {
+
+                })
+                .error(function (err) {
+                    console.log("fejl");
+                });
+        }
+
+
         $scope.addstudent = function () {
 
             console.log("Class " + $scope.classstudent);
@@ -104,9 +142,7 @@ angular.module('myAppRename.view5', ['ngRoute'])
             var student = {
                 username: $scope.usernamestudent,
                 name: $scope.namestudent,
-                points: 0,
-                class: $scope.classstudent,
-                semester: $scope.semesterstudent
+                points: 0
 
             }
 
@@ -118,9 +154,10 @@ angular.module('myAppRename.view5', ['ngRoute'])
 
             console.log(student)
 
-            $http.put('/adminApi/addtostudent', student)
+            $http.put('/adminApi/addtostudentnew', student)
                 .success(function () {
                     $scope.saved = "true";
+                    $scope.addtosemesterclass();
                 })
                 .error(function (err) {
                     console.log("fejl");
@@ -134,6 +171,16 @@ angular.module('myAppRename.view5', ['ngRoute'])
                     console.log("")
                 });
         }
+
+        $scope.addtosemesterclass = function() {
+
+            $http({
+                url: 'adminApi/semesterclassnew/',
+                method: "POST",
+                data: {'semesterclass': $scope.semesterclassmodel, 'student': $scope.usernamestudent}
+            });
+
+        };
 
 
     })

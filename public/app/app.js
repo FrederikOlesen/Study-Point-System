@@ -12,11 +12,10 @@ angular.module('myAppRename', [
   'myAppRename.profile',
   'myAppRename.documentation',
   'myAppRename.overview',
-  'myAppRename.view5',
   'myAppRename.changepassword',
   'myAppRename.delete',
   'myAppRename.period',
-  'myAppRename.addstudent'
+  'myAppRename.adduser'
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/frontpage'});
