@@ -69,16 +69,5 @@ describe('REST API for /user', function () {
         })
     });
 
-   /* it("Should return the user from the JPA-server, which has the right username", function (done) {
-        http.get("http://localhost:" + localHostPort + "/login/" + username, function (res) {
-            res.setEncoding("utf8");//response data is now a string
-            res.on("data", function (chunk) {
-                var n = JSON.parse(chunk);
-                n[0].username.should.equal("MadsJeppesen");
-                done();
-            });
-        })
-    });
-   */
 
 });
