@@ -21,7 +21,7 @@ if( typeof global.TEST_DATABASE != "undefined" ) {
   dbURI = global.TEST_DATABASE;
 }
 else{
-  dbURI = 'mongodb://adminuser123:Admin123@ds055980.mongolab.com:55980/studypointsystem';
+  dbURI = 'mongodb://abekat:abekat@ds063180.mongolab.com:63180/studypointdb';
 }
 
 mongoose.connect(dbURI);
@@ -61,10 +61,13 @@ mongoose.model( 'User', usersSchema,"testusers" );
 var studentSchema = new mongoose.Schema({
   username: String,
   name: String,
-  points: Number,
-  class: String,
-  semester: String
+  points: Number
 
+});
+
+var semesterclassSchema = new mongoose.Schema({
+  semesterclassname: String,
+  students: Array
 });
 
 var teacherSchema = new mongoose.Schema({
@@ -84,9 +87,13 @@ var periodSchema = new mongoose.Schema({
 });
 
 mongoose.model('Students', studentSchema, "students");
+mongoose.model('SemesterClass', semesterclassSchema, "semesterclass");
+
 mongoose.model('Teachers', teacherSchema, "teachers");
 mongoose.model('Period', periodSchema, "period");
 
 module.exports.studentModel = mongoose.model('testStudent',studentSchema);
+module.exports.semesterclassModel = mongoose.model('testSemesterclass',semesterclassSchema);
+
 module.exports.teacherModel = mongoose.model('testTeacher',teacherSchema);
 module.exports.periodModel = mongoose.model('testPeriod' , periodSchema);

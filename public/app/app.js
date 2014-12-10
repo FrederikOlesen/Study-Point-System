@@ -16,6 +16,7 @@ angular.module('myAppRename', [
   'myAppRename.changepassword',
   'myAppRename.delete',
   'myAppRename.period',
+  'myAppRename.addstudent'
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/frontpage'});

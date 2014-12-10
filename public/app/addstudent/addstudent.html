@@ -1,0 +1,80 @@
+<h3><span class="label label-default">Add User</span></h3>
+
+
+Toggle Student/Teacher <input type="checkbox" ng-model="checked"><br/>
+
+
+<!--TEACHER PART-->
+<div class="jumbotron" ng-hide="checked" >
+    <h3><span class="label label-default">Teacher</span></h3>
+
+
+
+    <form >
+        <input type ="text" ng-model="nameteacher" class="form-control" placeholder="Name" >
+
+        <br>
+        <input type ="text" ng-model="usernameteacher" class="form-control" placeholder="Username" >
+
+        <br>
+        <input type ="password"  ng-model="passwordteacher" class="form-control" placeholder="Password">
+        <span ng-show="!passwordteacher || !usernameteacher || !nameteacher ">Please fill all fields</span>
+        <br>
+    </form>
+    <span ng-model="savedteacher" ng-show="savedteacher" > User saved </span>
+    <span ng-model="checkteacher" ng-show="checkteacher">Username allready exists</span><br>
+    <button ng-click="checkuserteacher()" type="button" class="btn btn-default btn-sm" ng-disabled="!nameteacher || !usernameteacher || !passwordteacher"  >
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+    </button></td>
+
+</div>
+
+<!--STUDENT PART-->
+
+<div class="jumbotron" ng-show="checked" >
+    <h3><span class="label label-default">Add Student</span></h3>
+
+
+    <form role="form">
+        <div  class="form-group">
+            <label >SemesterClass:</label>
+            <select  ng-model="semesterclassmodel" class="form-control" id="sel2">
+                <option value="">Choose one</option>
+                <option ng-repeat="class in semesterclass">{{class.semesterclassname}}</option>
+            </select>
+
+        </div>
+
+    </form>
+
+
+
+    <input type ="text" ng-model="namestudent" class="form-control" placeholder="Name">
+    <br>
+    <input type ="text" ng-model="usernamestudent" class="form-control" placeholder="Username">
+    <br>
+    <input type ="password" ng-model="passwordstudent" class="form-control" placeholder="Password">
+    <br>
+
+    <span ng-model="check" ng-show="check">Username already exists</span><br>
+
+    <span ng-model="saved" ng-show="saved" > User saved </span>
+
+    <span ng-show="!semesterclassmodel || !namestudent || !usernamestudent || !passwordstudent ">Please fill all fields</span>
+    <button ng-click="checkuserstudent()" type="button" class="btn btn-default btn-sm" ng-disabled="!semesterclass|| !namestudent
+            || !usernamestudent || !passwordstudent ">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+    </button></td>
+
+
+    <h3><span class="label label-default">Add Class</span></h3>
+    <br>
+    <input type ="text" ng-model="semesterclassname" class="form-control" placeholder="Semesterclassname">
+    <br>
+    <button ng-click="addsemesterclass()" type="button" class="btn btn-default btn-sm" ng-disabled="!semesterclassname">
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+    </button></td>
+
+
+</div>
+

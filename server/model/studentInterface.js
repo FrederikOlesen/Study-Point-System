@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
-var students = mongoose.model('Students');
 var teachers = mongoose.model('Teachers');
+var students = mongoose.model('Students');
+var semesterclassnew = mongoose.model('SemesterClass');
+
 
 function getAllStudents(callback) {
     students.find({}, function (err, student) {
@@ -75,6 +77,38 @@ function addtoteacher(data) {
 
 }
 
+    function addtostudentnew(data) {
+        var student = new students(data);
+        student.save(function () {
+            console.log(student);
+        });
+
+}
+
+    function addtosemesterclassnew(data) {
+        var semesterclass = new semesterclassnew(data);
+        semesterclass.save(function () {
+
+        });
+    }
+
+function getAllSemesterclass(callback) {
+    semesterclassnew.find({}, function (err, semesterclass) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, semesterclass);
+    });
+}
+
+function updateClassSemester(body) {
+    semesterclassnew.update({semesterclassname: body.semesterclass}, {
+        $addToSet: {
+            students: body.student
+        }
+    }, {multi: true}).exec();
+
+}
 
 module.exports = {
     getAllStudents: getAllStudents,
@@ -84,5 +118,9 @@ module.exports = {
     deleteStudent: deleteStudent,
     getallUsernames: getAllUsernames,
     getuser: getuser,
-    getuserteacher: getuserteacher
+    getuserteacher: getuserteacher,
+    addtostudentnew: addtostudentnew,
+    addtosemesterclassnew: addtosemesterclassnew,
+    getAllSemesterclass: getAllSemesterclass,
+    updateClassSemester: updateClassSemester
 };
