@@ -6,35 +6,30 @@
 
 
     <form >
-        <input type ="text" ng-model="nameperiod" class="form-control" placeholder="Name of Period" >
-        <br>
-        <input type ="text" ng-model="descriptionperiod" class="form-control" placeholder="Description" >
-        <br>
-        <input type ="date" ng-model="startperiod" class="form-control" placeholder="Start" >
-        <br>
-        <input type ="date" ng-model="endperiod" class="form-control" placeholder="End" >
-        <br>
-        <input type ="number" ng-model="maxpoints" class="form-control" placeholder="maxpoints" >
-        <br>
-        <input type ="number" ng-model="requiredpoints" class="form-control" placeholder="Required points" >
-        <br>
-        <select  ng-model="classstudent" class="form-control" id="sel2">
-            <option>data</option>
-            <option>datb</option>
-            <option>COS</option>
-            <option>mula</option>
-            <option>mulb</option>
 
+
+        <label >SemesterClass:</label>
+        <select  ng-model="semesterclassmodel" class="form-control" id="sel2">
+            <option value="">Choose one</option>
+            <option ng-repeat="class in semesterclass">{{class.semesterclassname}}</option>
         </select>
         <br>
-        <select ng-model="semesterstudent" class="form-control" id="sel3">
-            <option>1st Semester</option>
-            <option>2nd Semester</option>
-            <option>3rd Semester</option>
-            <option>4th Semester</option>
-            <option>5th Semester</option>
-        </select>
+        <input type ="text" ng-model="nameperiodmodel" class="form-control" placeholder="Name of Period" >
+        <br>
+        <input type ="text" ng-model="descriptionperiodmodel" class="form-control" placeholder="Description" >
+        <br>
+        <input type ="date" ng-model="startperiodmodel" class="form-control" placeholder="Start" >
+        <br>
+        <input type ="date" ng-model="endperiodmodel" class="form-control" placeholder="End" >
+        <br>
+        <input type ="number" ng-model="maxpointsmodel" class="form-control" placeholder="maxpoints" >
+        <br>
+        <input type ="number" ng-model="requiredpointsmodel" class="form-control" placeholder="Required points" >
+        <br>
 
+        <button ng-click="addperiodsemesterclass()" type="button" class="btn btn-default btn-sm" >
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+        </button></td>
 
 
 

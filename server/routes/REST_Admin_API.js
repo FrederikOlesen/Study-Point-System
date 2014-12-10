@@ -9,6 +9,7 @@ var students = require('../model/studentInterface');
 var studentsnew = require('../model/studentInterface');
 var teachers = require('../model/studentInterface');
 var semesterclass = require('../model/studentInterface');
+var period = require('../model/studentInterface');
 
 var host = "137.135.179.157";
 
@@ -163,6 +164,13 @@ router.put('/addtostudentnew', function (req, res) {
     res.send("");
 })
 
+router.put('/addperiod', function (req, res) {
+    period.addperiod(req.body, function (err) {
+    });
+    console.log(req.body);
+    res.send("");
+})
+
 router.put('/addtosemesterclassnew', function (req, res) {
     semesterclass.addtosemesterclassnew(req.body, function (err) {
     });
@@ -185,6 +193,13 @@ router.get('/semesterclassnew', function (req, res) {
 
 router.post('/semesterclassnew', function (req, res) {
     semesterclass.updateClassSemester(req.body, function (err) {
+    });
+    res.send("");
+
+})
+
+router.post('/addperiodtosemesterclassnew', function (req, res) {
+    semesterclass.updateperiodeClassSemester(req.body, function (err) {
     });
     res.send("");
 

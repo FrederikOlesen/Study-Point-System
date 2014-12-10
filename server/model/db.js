@@ -67,7 +67,8 @@ var studentSchema = new mongoose.Schema({
 
 var semesterclassSchema = new mongoose.Schema({
   semesterclassname: String,
-  students: Array
+  students: Array,
+  periods: Array
 });
 
 var teacherSchema = new mongoose.Schema({
@@ -82,15 +83,14 @@ var periodSchema = new mongoose.Schema({
   endDate: Date,
   maxPoint: Number,
   requiredPoint: Number,
-  semester: String,
-  class: String
+  tasks: Array
 });
 
 mongoose.model('Students', studentSchema, "students");
 mongoose.model('SemesterClass', semesterclassSchema, "semesterclass");
 
 mongoose.model('Teachers', teacherSchema, "teachers");
-mongoose.model('Period', periodSchema, "period");
+mongoose.model('Period', periodSchema, "periods");
 
 module.exports.studentModel = mongoose.model('testStudent',studentSchema);
 module.exports.semesterclassModel = mongoose.model('testSemesterclass',semesterclassSchema);

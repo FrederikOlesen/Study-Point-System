@@ -14,68 +14,55 @@ angular.module('myAppRename.period', ['ngRoute'])
 
     .controller('View8Ctrl', function ($scope, $http) {
 
-        $scope.studentsmodel = [];
-        $scope.increase = function(username, points,data) {
-            if(data==undefined)
-            {data = 1}
-            if (data>100){
-                data=100;
-            }
-            console.log(data)
-            points = points + data;
-            $http({
-                url: 'adminApi/students/',
-                method: "POST",
-                data: {'username': username, 'points': points}
-            });
-            for(var i = 0; i < $scope.students.length; i++) {
-                if($scope.students[i].username === username) {
-                    $scope.students[i].points += data;
-                    break;
-                }
-            }
-        };
-        $scope.decrease = function(username, points, data) {
-            if(data == undefined) {
-                data = 1}
-
-            points = points - data;
-            $http({
-                url: 'adminApi/students/',
-                method: "POST",
-                data: {'username': username, 'points': points}
-            });
-            for(var i = 0; i < $scope.students.length; i++) {
-                if($scope.students[i].username === username) {
-                    $scope.students[i].points -= data;
-                    break;
-                }
-            }
-        };
         $http({
             method: 'GET',
-            url: 'adminApi/students/'
+            url: 'adminApi/semesterclassnew/'
 
         }).
             success(function (data) {
-                $scope.students = data;
+                $scope.semesterclass = data;
+                console.log($scope.semesterclass);
             }).
             error(function (data) {
                 $scope.error = data;
             });
 
 
-        $scope.getClasses =  function() {
-            var output = [];
-            if(!angular.isUndefined($scope.students)) {
-                $scope.students.forEach(function(item) {
-                    if(output.filter(function(x) {return x === item.class;}).length <= 0) {
-                        output.push(item.class);
-                    }
-                });
-                return output;
-            };
-        }
 
+            $scope.addperiodsemesterclass = function() {
+
+
+                $http({
+                    url: 'adminApi/addperiodtosemesterclassnew/',
+                    method: "POST",
+                    data: {'semesterclass': $scope.semesterclassmodel, 'nameperiod': $scope.nameperiodmodel}
+                });
+
+                var period = {
+                    name: $scope.nameperiodmodel,
+                    description: $scope.descriptionperiodmodel,
+                    startDate: $scope.startperiodmodel,
+                    endDate: $scope.endperiodmodel,
+                    maxPoint: $scope.maxpointsmodel,
+                    requiredPoint: $scope.requiredpointsmodel,
+                    tasks: []
+                }
+
+                $http.put('/adminApi/addperiod', period)
+                    .success(function () {
+
+                    })
+                    .error(function (err) {
+                        console.log("fejl");
+                    });
+
+                $http.post('adminApi/addusers', login)
+                    .success(function (data, status, headers, config) {
+                        console.log("Test")
+                    })
+                    .error(function (data, status, headers, config) {
+                        console.log("")
+                    });
+        }
 
     })
