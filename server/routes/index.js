@@ -17,13 +17,15 @@ router.post('/authenticate', function (req, res) {
 
     console.log("Test");
 
+    console.log("Username: " + username);
+
     request.get(
         'http://137.135.179.157:8080/login/' + username,
         function (error, response, body) {
+            console.log("Body: " + body);
 
-            if (body === null || body === 'undefined') {
+            if (error) {
                 res.status(401).send('Wrong username or password');
-
 
             } else {
                 var obj = JSON.parse(body);
