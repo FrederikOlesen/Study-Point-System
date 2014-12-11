@@ -15,9 +15,6 @@ router.post('/authenticate', function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
 
-    console.log("Test");
-
-    console.log("Username: " + username);
 
     request.get(
         'http://137.135.179.157:8080/login/' + username,

@@ -6,112 +6,118 @@ var http = require('http');
 
 exports.JSONRequestPost = function (host, port, path, obj, callback) {
     var postdata = JSON.stringify(obj);
+    var headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': postdata.length
+    };
+
     var options = {
         host: host,
         port: port,
         path: path,
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': postdata.length
-        }
-    }
+        method: 'POST',
+        headers: headers
+    };
 
-    console.log("Postdata: " + postdata);
-    console.log("You are in error JSONRequest");
+// Setup the request.  The options parameter is
+// the object we defined above.
+    var req = http.request(options, function (res) {
+        res.setEncoding('utf-8');
 
-    var request = http.request(options, function (response) {
-        console.log("You are in error JSONRequest request");
-        var result = "";
-        response.setEncoding('utf8');
-        response.on('data', function (chunk) {
-            result += chunk;
+        var responseString = '';
+
+        res.on('data', function (data) {
+            responseString += data;
         });
 
-        response.on('end', function () {
-            callback(null, JSON.parse(result));
-        })
+        res.on('end', function () {
+            var resultObject = JSON.parse(responseString);
+        });
+    });
 
-        response.on('error', function (e) {
-
-            callback(e);
-        })
-    })
-
-    request.write(postdata);
-    request.end();
+    req.on('error', function (e) {
+        // TODO: handle error.
+    });
+    console.log("You are through the JSONrequest POST part");
+    req.write(postdata);
+    req.end();
 }
 
 exports.JSONRequestPut = function (host, port, path, obj, callback) {
     var postdata = JSON.stringify(obj);
+    var headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': postdata.length
+    };
+
     var options = {
         host: host,
         port: port,
         path: path,
-        method: "PUT",
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': postdata.length
-        }
-    }
+        method: 'PUT',
+        headers: headers
+    };
 
-    console.log("Postdata: " + postdata);
+// Setup the request.  The options parameter is
+// the object we defined above.
+    var req = http.request(options, function (res) {
+        res.setEncoding('utf-8');
 
+        var responseString = '';
 
-    var request = http.request(options, function (response) {
-        var result = "";
-        response.setEncoding('utf8');
-        response.on('data', function (chunk) {
-            result += chunk;
+        res.on('data', function (data) {
+            responseString += data;
         });
 
-        response.on('end', function () {
-            callback(null, JSON.parse(result));
-        })
+        res.on('end', function () {
+            var resultObject = JSON.parse(responseString);
+        });
+    });
 
-        response.on('error', function (e) {
-            console.log("Test in error");
-            callback(e);
-        })
-    })
+    req.on('error', function (e) {
+        // TODO: handle error.
+    });
+    console.log("You are through the JSONrequest PUT part");
+    req.write(postdata);
+    req.end();
 
-    request.write(postdata);
-    request.end();
 }
 
 exports.JSONRequestDelete = function (host, port, path, obj, callback) {
     var postdata = JSON.stringify(obj);
+    var headers = {
+        'Content-Type': 'application/json',
+        'Content-Length': postdata.length
+    };
+
     var options = {
         host: host,
         port: port,
         path: path,
-        method: "DELETE",
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': postdata.length
-        }
-    }
+        method: 'DELETE',
+        headers: headers
+    };
 
-    console.log("Postdata: " + postdata);
+// Setup the request.  The options parameter is
+// the object we defined above.
+    var req = http.request(options, function (res) {
+        res.setEncoding('utf-8');
 
+        var responseString = '';
 
-    var request = http.request(options, function (response) {
-        var result = "";
-        response.setEncoding('utf8');
-        response.on('data', function (chunk) {
-            result += chunk;
+        res.on('data', function (data) {
+            responseString += data;
         });
 
-        response.on('end', function () {
-            callback(null, JSON.parse(result));
-        })
+        res.on('end', function () {
+            var resultObject = JSON.parse(responseString);
+        });
+    });
 
-        response.on('error', function (e) {
-            console.log("Test in error");
-            callback(e);
-        })
-    })
-
-    request.write(postdata);
-    request.end();
+    req.on('error', function (e) {
+        // TODO: handle error.
+    });
+    console.log("You are through the JSONrequest DELETE part");
+    req.write(postdata);
+    req.end();
 }
