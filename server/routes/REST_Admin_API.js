@@ -133,7 +133,7 @@ router.delete('/deleteperson/:username', function (req, res) {
         console.log("You are back in the DeletePerson RestAPI part");
     })
 
-    //teachers.deleteStudent(username);
+    teachers.deleteStudent(username);
 });
 //---------------------------------NEW DATABASE---------------------------------------------
 
