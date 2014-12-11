@@ -14,19 +14,14 @@ angular.module('myAppRename.changepassword', ['ngRoute'])
 
         $scope.newpassword = function () {
 
-            console.log("Class " + $scope.classstudent);
-            console.log("Name " + $scope.namestudent);
-            console.log("Username " + $scope.usernamestudent);
-            console.log("Password " + $scope.passwordstudent);
-
 
             var login = {
-                username: $scope.profileuser,
+                username: $scope.username,
                 password: $scope.oldpass,
                 confirmedpassword: $scope.newpass
             }
 
-            console.log(login)
+
 
             $http.put('/adminApi/changepassword', login)
                 .success(function () {
