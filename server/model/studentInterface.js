@@ -3,6 +3,7 @@ var teachers = mongoose.model('Teachers');
 var students = mongoose.model('Students');
 var semesterclassnew = mongoose.model('SemesterClass');
 var periods = mongoose.model('Period');
+var tasks = mongoose.model('Task');
 
 
 function getAllStudents(callback) {
@@ -98,6 +99,13 @@ function addperiod(data) {
 
     });
 }
+function addtask(data) {
+    var task = new tasks(data);
+    console.log(task)
+    task.save(function () {
+
+    });
+}
 
 function getAllSemesterclass(callback) {
     semesterclassnew.find({}, function (err, semesterclass) {
@@ -105,6 +113,16 @@ function getAllSemesterclass(callback) {
             return callback(err);
         }
         callback(null, semesterclass);
+    });
+}
+
+
+function getAllPeriods(callback) {
+    periods.find({}, function (err, period) {
+        if (err) {
+            return callback(err);
+        }
+        callback(null, period);
     });
 }
 
@@ -126,6 +144,17 @@ function updateperiodeClassSemester(body) {
 
 }
 
+function updatetaskinperiod(body) {
+    periods.update({name: body.periodname}, {
+        $addToSet: {
+            tasks: body.nametask
+        }
+    }, {multi: true}).exec();
+    console.log("HEJ KIG HER SPASSER" + body.periodname + " " + body.nametask)
+}
+
+
+
 module.exports = {
     getAllStudents: getAllStudents,
     updateStudentPoints: updateStudentPoints,
@@ -140,5 +169,9 @@ module.exports = {
     getAllSemesterclass: getAllSemesterclass,
     updateClassSemester: updateClassSemester,
     updateperiodeClassSemester: updateperiodeClassSemester,
-    addperiod: addperiod
+    addperiod: addperiod,
+    getAllPeriods: getAllPeriods,
+    addtask: addtask,
+    updatetaskinperiod: updatetaskinperiod
+
 };

@@ -9,7 +9,8 @@ var students = require('../model/studentInterface');
 var studentsnew = require('../model/studentInterface');
 var teachers = require('../model/studentInterface');
 var semesterclass = require('../model/studentInterface');
-var period = require('../model/studentInterface');
+var periods = require('../model/studentInterface');
+var tasks = require('../model/studentInterface');
 
 var host = "137.135.179.157";
 
@@ -145,7 +146,15 @@ router.put('/addtostudentnew', function (req, res) {
 })
 
 router.put('/addperiod', function (req, res) {
-    period.addperiod(req.body, function (err) {
+    periods.addperiod(req.body, function (err) {
+    });
+    console.log(req.body);
+    res.send("");
+})
+
+router.put('/addtask', function (req, res) {
+
+    tasks.addtask(req.body, function (err) {
     });
     console.log(req.body);
     res.send("");
@@ -157,6 +166,8 @@ router.put('/addtosemesterclassnew', function (req, res) {
     console.log(req.body);
     res.send("");
 })
+
+
 
 router.get('/semesterclassnew', function (req, res) {
 
@@ -171,6 +182,7 @@ router.get('/semesterclassnew', function (req, res) {
     });
 });
 
+
 router.post('/semesterclassnew', function (req, res) {
     semesterclass.updateClassSemester(req.body, function (err) {
     });
@@ -184,5 +196,25 @@ router.post('/addperiodtosemesterclassnew', function (req, res) {
     res.send("");
 
 })
+
+router.post('/addtasktoperiode', function (req, res) {
+    tasks.updatetaskinperiod(req.body, function (err) {
+    });
+    res.send("");
+
+})
+
+router.get('/getperiods', function (req, res) {
+
+    periods.getAllPeriods(function (err, period) {
+        if (err) {
+            res.status(err.status || 500);
+            res.send(JSON.stringify({error: err.toString()}));
+            return;
+        }
+        //res.header("Content-type", "application/json");
+        res.json(period);
+    });
+});
 
 module.exports = router;

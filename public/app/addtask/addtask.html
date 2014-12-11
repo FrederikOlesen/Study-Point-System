@@ -1,0 +1,16 @@
+<label >SemesterClass:</label>
+
+<select  ng-model="periodmodel" class="form-control" id="sel2">
+    <option value="">Choose one</option>
+    <option ng-repeat="class in period">{{class.name}}</option>
+</select>
+<br>
+
+<input type ="text" ng-model="nametaskmodel" class="form-control" placeholder="Name of Task" >
+<br>
+<input type ="point" ng-model="maxpointmodel" class="form-control" placeholder="Maxpoint" >
+<br>
+
+<button ng-click="addtask()" type="button" class="btn btn-default btn-sm" >
+    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Submit
+</button></td>

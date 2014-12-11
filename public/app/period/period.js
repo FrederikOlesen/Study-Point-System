@@ -32,11 +32,7 @@ angular.module('myAppRename.period', ['ngRoute'])
             $scope.addperiodsemesterclass = function() {
 
 
-                $http({
-                    url: 'adminApi/addperiodtosemesterclassnew/',
-                    method: "POST",
-                    data: {'semesterclass': $scope.semesterclassmodel, 'nameperiod': $scope.nameperiodmodel}
-                });
+
 
                 var period = {
                     name: $scope.nameperiodmodel,
@@ -50,19 +46,17 @@ angular.module('myAppRename.period', ['ngRoute'])
 
                 $http.put('/adminApi/addperiod', period)
                     .success(function () {
-
+                        $http({
+                            url: 'adminApi/addperiodtosemesterclassnew/',
+                            method: "POST",
+                            data: {'semesterclass': $scope.semesterclassmodel, 'nameperiod': $scope.nameperiodmodel}
+                        });
                     })
                     .error(function (err) {
                         console.log("fejl");
                     });
-
-                $http.post('adminApi/addusers', login)
-                    .success(function (data, status, headers, config) {
-                        console.log("Test")
-                    })
-                    .error(function (data, status, headers, config) {
-                        console.log("")
-                    });
         }
+
+
 
     })
