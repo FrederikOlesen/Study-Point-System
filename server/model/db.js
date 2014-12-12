@@ -60,7 +60,8 @@ mongoose.model( 'User', usersSchema,"testusers" );
 
 var studentSchema = new mongoose.Schema({
   username: String,
-  name: String
+  name: String,
+  points: Number
 });
 
 var semesterclassSchema = new mongoose.Schema({
@@ -71,8 +72,8 @@ var semesterclassSchema = new mongoose.Schema({
 
 var teacherSchema = new mongoose.Schema({
   name: String,
-  username: String,
-  points: Number
+  username: String
+
 });
 
 var periodSchema = new mongoose.Schema({
