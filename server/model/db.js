@@ -71,7 +71,8 @@ var semesterclassSchema = new mongoose.Schema({
 
 var teacherSchema = new mongoose.Schema({
   name: String,
-  username: String
+  username: String,
+  points: Number
 });
 
 var periodSchema = new mongoose.Schema({
