@@ -65,10 +65,51 @@ angular.module('myAppRename.overview', ['ngRoute'])
         $http({
             method: 'GET',
             url: 'adminApi/students/'
-
         }).
             success(function (data) {
                 $scope.students = data;
+                $http({
+                    method: 'GET',
+                    url:'adminApi/semesterclassnew/'
+                }).
+                    success(function(data) {
+                        $scope.semesterclass = data;
+
+                        var studentarray = [];
+                        for(var i = 0; i < $scope.semesterclass.length; i++) {
+                            for(var j = 0; j < $scope.semesterclass[i].students.length; j++) {
+                                studentarray.push($scope.semesterclass[i].students[j]);
+                            }
+                        }
+                        console.log(studentarray);
+                        var studentoverviewtest = [];
+                        for(var i = 0; i < studentarray.length; i++) {
+
+
+                        }
+
+
+                        var studentoverview = [{
+                            "username": $scope.students[2].username,
+                            "name": $scope.students[2].name,
+                            "points": $scope.students[2].points,
+                            "class": $scope.semesterclass[0].semesterclassname
+                        },
+                            {"username": $scope.students[3].username,
+                                "name": $scope.students[3].name,
+                                "points": $scope.students[3].points,
+                                "class": $scope.semesterclass[1].semesterclassname
+                            }];
+
+                        $scope.semesterclass = studentoverview;
+
+
+                    }).
+                    error(function(data) {
+                        $scope.error = data;
+                    });
+
+
             }).
             error(function (data) {
                 $scope.error = data;
@@ -77,13 +118,13 @@ angular.module('myAppRename.overview', ['ngRoute'])
 
         $scope.getClasses =  function() {
             var output = [];
-            if(!angular.isUndefined($scope.students)) {
-            $scope.students.forEach(function(item) {
-                if(output.filter(function(x) {return x === item.class;}).length <= 0) {
-                    output.push(item.class);
-                }
-            });
-            return output;
-        };
+            if(!angular.isUndefined($scope.semesterclass)) {
+                $scope.semesterclass.forEach(function(item) {
+                    if(output.filter(function(x) {return x === item.class;}).length <= 0) {
+                        output.push(item.class);
+                    }
+                });
+                return output;
+            };
         }
     });

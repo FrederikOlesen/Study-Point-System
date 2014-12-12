@@ -9,21 +9,12 @@
                     <option value="">All Classes</option>
                     <option ng-repeat="class in getClasses()">{{class}}</option>
                 </select></th>
-                <th><select class="form-control-xs" ng-model="filtersemester">
-                    <option value="">All Semesters</option>
-                    <option>1st Semester</option>
-                    <option>2nd Semester</option>
-                    <option>3rd Semester</option>
-                    <option>4th Semester</option>
-                    <option>5th Semester</option>
-                </select></th>
                 <th>Number of Points </th>
             </tr>
-            <tr ng-repeat="student in students | filter:filterclass | filter:filtersemester | orderBy:predicate:reverse">
+            <tr ng-repeat="student in semesterclass | filter:filterclass | orderBy:predicate:reverse">
                 <td>{{student.name}}</td>
                 <td>{{student.points}}</td>
                 <td>{{student.class}}</td>
-                <td>{{student.semester}}</td>
                 <td>
                     <div class="col-xs-8">
                         <input type ="number" ng-model="data" class="form-control" min="1" max="99" maxlength="2" required></div>
@@ -34,6 +25,7 @@
                         <span class="glyphicon glyphicon-minus"></span>
                     </button></td>
             </tr>
+
         </table>
     </div>
 </ul>
