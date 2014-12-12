@@ -62,6 +62,7 @@ var studentSchema = new mongoose.Schema({
   username: String,
   name: String,
   points: Number
+  
 });
 
 var semesterclassSchema = new mongoose.Schema({
