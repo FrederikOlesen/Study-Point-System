@@ -60,14 +60,13 @@ mongoose.model( 'User', usersSchema,"testusers" );
 
 var studentSchema = new mongoose.Schema({
   username: String,
-  name: String,
-  points: Number
+  name: String
 });
 
 var semesterclassSchema = new mongoose.Schema({
   semesterclassname: String,
-  students: Array,
-  periods: Array
+  students: [{ type: String, ref: 'students' }],
+  periods: [{ type: String, ref: 'periods' }]
 });
 
 var teacherSchema = new mongoose.Schema({
@@ -76,17 +75,17 @@ var teacherSchema = new mongoose.Schema({
 });
 
 var periodSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, ref: 'semesterclass'},
   description: String,
   startDate: Date,
   endDate: Date,
   maxPoint: Number,
   requiredPoint: Number,
-  tasks: Array
+  tasks: [{ type: String, ref: 'tasks' }]
 });
 
 var taskSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, ref: 'periods'},
   maxpoint: Number
 });
 
@@ -97,9 +96,9 @@ mongoose.model('Teachers', teacherSchema, "teachers");
 mongoose.model('Period', periodSchema, "periods");
 mongoose.model('Task', taskSchema, "tasks");
 
-module.exports.studentModel = mongoose.model('testStudent',studentSchema);
-module.exports.semesterclassModel = mongoose.model('testSemesterclass',semesterclassSchema);
+module.exports.studentModel = mongoose.model('students',studentSchema);
+module.exports.semesterclassModel = mongoose.model('semesterclass',semesterclassSchema);
 
-module.exports.teacherModel = mongoose.model('testTeacher',teacherSchema);
-module.exports.periodModel = mongoose.model('testPeriod' , periodSchema);
-module.exports.taskModel = mongoose.model('testTask' , taskSchema);
+module.exports.teacherModel = mongoose.model('teachers',teacherSchema);
+module.exports.periodModel = mongoose.model('periods' , periodSchema);
+module.exports.taskModel = mongoose.model('tasks' , taskSchema);
